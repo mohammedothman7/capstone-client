@@ -30,12 +30,9 @@ const LoginFormView = (props) => {
           />
         </div>
 
-        <div className="form-group">
-          <button className="btn btn-outline-danger mr-1">Login</button>
-          <Link to="/register" className="btn btn-outline-danger">
-            Register
-          </Link>
-          <Link to="/" className="btn btn-outline-danger ml-5">
+        <div className="form-group d-flex justify-content-between">
+          <button className="btn btn-outline-danger">Login</button>
+          <Link to="/" className="btn btn-outline-danger">
             Back To Home
           </Link>
         </div>
