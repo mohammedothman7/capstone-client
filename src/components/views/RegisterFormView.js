@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const RegisterFormView = (props) => {
   return (
-    <div className="col-md-6 col-md-offset-3">
+    <div className="container col-md-6 mt-5">
       <h2>Register</h2>
       <form onSubmit={props.handleSubmit}>
         <div className="form-group">
@@ -53,9 +53,12 @@ const RegisterFormView = (props) => {
         </div>
 
         <div className="form-group">
-          <button className="btn btn-primary">Register</button>
-          <Link to="/login" className="btn btn-link">
+          <button className="btn btn-outline-danger mr-1">Register</button>
+          <Link to="/login" className="btn btn-outline-danger">
             Cancel
+          </Link>
+          <Link to="/" className="btn btn-outline-danger ml-5">
+            Back To Home
           </Link>
         </div>
       </form>
