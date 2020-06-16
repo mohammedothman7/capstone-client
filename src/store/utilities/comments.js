@@ -1,14 +1,14 @@
 import axios from "axios";
 
 //Action Types
-const FETCH_GAME = "FETCH_GAME";
+const FETCH_COMMENTS = "FETCH_COMMENTS";
 const ADD_COMMENT = "ADD_COMMENT";
 
 //Action Creators
-const fetchGame = (game) => {
+const fetchComments = (comments) => {
   return {
-    type: FETCH_GAME,
-    payload: game,
+    type: FETCH_COMMENTS,
+    payload: comments,
   };
 };
 
@@ -16,22 +16,22 @@ const addComment = (comment) => {
   return {
     type: ADD_COMMENT,
     payload: comment,
-  }
-}
+  };
+};
 
 //Thunk Creators
-export const fetchGameThunk = (id) => (dispatch) => {
+export const fetchCommentsThunk = (gameId) => (dispatch) => {
   return axios
-    .get(`https://api.rawg.io/api/games/${id}`)
+    .get(`/api/comments/${gameId}`)
     .then((res) => res.data)
-    .then((game) => dispatch(fetchGame(game)))
+    .then((comments) => dispatch(fetchComments(comments)))
     .catch((err) => console.log(err));
 };
 
 //Reducer
-const reducer = (state = {}, action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
-    case FETCH_GAME:
+    case FETCH_COMMENTS:
       return action.payload;
     default:
       return state;
