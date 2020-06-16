@@ -54,7 +54,7 @@ const RegisterFormView = (props) => {
 
         <div className="form-group">
           <button className="btn btn-primary">Register</button>
-          <Link to="/" className="btn btn-link">
+          <Link to="/login" className="btn btn-link">
             Cancel
           </Link>
         </div>
