@@ -21,11 +21,14 @@ class LoginFormContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.login(this.state);
   };
 
   render() {
     return (
       <LoginFormView
+        username={this.state.username}
+        password={this.state.password}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
@@ -33,7 +36,14 @@ class LoginFormContainer extends Component {
   }
 }
 
-// const mapDispatchToProps = () => {};
-// export default connect(null, mapDispatch)(LoginFormContainer);
+const mapDispatch = (dispatch, ownProps) => {
+  return {
+    login: (user) => dispatch(loginThunk(user, ownProps)),
+  };
+};
 
-export default LoginFormContainer;
+LoginFormContainer.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatch)(LoginFormContainer);
