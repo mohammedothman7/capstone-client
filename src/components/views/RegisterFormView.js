@@ -30,6 +30,18 @@ const RegisterFormView = (props) => {
         </div>
 
         <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={props.email}
+            className="form-control"
+            onChange={props.handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
           <label>Username</label>
           <input
             name="username"
@@ -66,6 +78,11 @@ const RegisterFormView = (props) => {
 RegisterFormView.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
 };
 
 export default RegisterFormView;
