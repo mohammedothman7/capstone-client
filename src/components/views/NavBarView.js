@@ -20,7 +20,7 @@ const NavBarView = (props) => {
             Search
           </button>
         </form>
-        <div class="ml-auto p-1">
+        <div className="ml-auto p-1">
           <Link to="/about" className="btn btn-outline-danger mr-4">
             About
           </Link>
