@@ -8,20 +8,55 @@ export class AllGamesContainer extends Component {
     super(props);
     this.state = {
       games: [],
+      filter: {
+        page: 1,
+        page_size: 40,
+      },
     };
   }
 
   componentDidMount() {
-    this.props.fetchAllGames();
+    // Call thunk to fetch games from API
+    this.props.fetchAllGames(this.state.filter);
+
+    // Store all games from redux store in games variable
     const games = this.props.allGames;
+    // Add the games we got from the store to state, so it can be rendered.
     this.setState({ games });
   }
+
+  // Sends the params to state, so it can be sent to backend for API call
+  handleFilter = (filter) => (event) => {
+    // Prevent the page from reloading when called
+    event.preventDefault();
+
+    /*Create a copy of filter in state, so we can 
+     modify if need be and send to fetchAllGamesThunk 
+    so we can use in API call */
+
+    const param = this.state.filter;
+
+    /* If next button is clicked then filter.page is set to -1, 
+    so we know to increment the page counter by 1 */
+
+    if (filter.page === -1) {
+      // Modify page in the copy of the state
+      param['page'] = param.page + 1;
+    }
+
+    // Call Thunk to fetch games from API
+    this.props.fetchAllGames(param);
+  };
+
   render() {
     return (
       <div>
-        {console.log(this.props.allGames)}
-        {console.log('Games State', this.state.games)}
-        <AllGamesView games={this.props.allGames}></AllGamesView>
+        <AllGamesView
+          games={this.props.allGames}
+          filter={this.state.filter}
+          handleFilter={this.handleFilter}
+          fetchAllGames={this.props.fetchAllGames}
+        ></AllGamesView>
       </div>
     );
   }
@@ -29,7 +64,7 @@ export class AllGamesContainer extends Component {
 
 // Map state to props;
 const mapState = (state) => {
-  console.log('In mapState');
+  //console.log('In mapState');
   return {
     allGames: state.allGames,
   };
@@ -37,9 +72,9 @@ const mapState = (state) => {
 
 // Map dispatch to props;
 const mapDispatch = (dispatch) => {
-  console.log('In mapDispatch');
+  //console.log('In mapDispatch');
   return {
-    fetchAllGames: () => dispatch(fetchAllGamesThunk()),
+    fetchAllGames: (params) => dispatch(fetchAllGamesThunk(params)),
   };
 };
 

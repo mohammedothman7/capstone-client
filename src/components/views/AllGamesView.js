@@ -3,7 +3,7 @@ import React from 'react';
 function AllGamesView(props) {
   return (
     <div>
-      {console.log('props.games', props.games)}
+      <button onClick={props.handleFilter({ page: -1 })}>Next Page</button>
       {props.games.data ? (
         props.games.data.map((game) => {
           return (
