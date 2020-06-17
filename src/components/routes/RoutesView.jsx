@@ -3,11 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import {
   LoginFormContainer,
   RegisterFormContainer,
-<<<<<<< HEAD
   AboutContainer,
-=======
   AllGamesContainer,
->>>>>>> e87118538da2d0bc900b4298eaaefa66cec62c2f
 } from "../containers";
 
 const RoutesView = () => {
