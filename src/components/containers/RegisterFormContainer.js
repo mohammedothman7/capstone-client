@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { RegisterFormView } from "../views";
-import { registerThunk } from "../../thunks";
+import { registerUserThunk } from "../../thunks";
 
 class RegisterFormContainer extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class RegisterFormContainer extends Component {
     this.state = {
       firstName: "",
       lastName: "",
+      email: "",
       username: "",
       password: "",
     };
@@ -23,11 +24,17 @@ class RegisterFormContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.registerUser(this.state);
   };
 
   render() {
     return (
       <RegisterFormView
+        firstName={this.state.firstName}
+        lastName={this.state.lastName}
+        email={this.state.email}
+        username={this.state.username}
+        password={this.state.password}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
@@ -35,7 +42,14 @@ class RegisterFormContainer extends Component {
   }
 }
 
-// const mapDispatchToProps = () => {};
-// export default connect(null, mapDispatch)(RegisterFormContainer);
+const mapDispatch = (dispatch, ownProps) => {
+  return {
+    registerUser: (user) => dispatch(registerUserThunk(user, ownProps)),
+  };
+};
 
-export default RegisterFormContainer;
+RegisterFormContainer.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatch)(RegisterFormContainer);

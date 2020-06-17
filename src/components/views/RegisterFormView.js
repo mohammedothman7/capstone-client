@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const RegisterFormView = (props) => {
   return (
-    <div className="col-md-6 col-md-offset-3">
+    <div className="container col-md-6 mt-5">
       <h2>Register</h2>
       <form onSubmit={props.handleSubmit}>
         <div className="form-group">
@@ -23,6 +23,18 @@ const RegisterFormView = (props) => {
           <input
             name="lastName"
             value={props.lastName}
+            className="form-control"
+            onChange={props.handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={props.email}
             className="form-control"
             onChange={props.handleChange}
             required
@@ -52,10 +64,10 @@ const RegisterFormView = (props) => {
           />
         </div>
 
-        <div className="form-group">
-          <button className="btn btn-primary">Register</button>
-          <Link to="/login" className="btn btn-link">
-            Cancel
+        <div className="form-group d-flex justify-content-between">
+          <button className="btn btn-outline-danger">Register</button>
+          <Link to="/" className="btn btn-outline-danger">
+            Back To Home
           </Link>
         </div>
       </form>
@@ -66,6 +78,11 @@ const RegisterFormView = (props) => {
 RegisterFormView.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
 };
 
 export default RegisterFormView;
