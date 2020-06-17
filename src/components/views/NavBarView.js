@@ -8,7 +8,9 @@ const NavBarView = (props) => {
       <nav className="container navbar navbar-expand-lg navbar-light bg-light">
         <div className="d-flex">
           <div className="logo2 mr-1"> </div>
-          <h3 className="text-danger">GameCord</h3>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h3 className="text-danger">GameCord</h3>
+          </Link>
         </div>
         <form className="form-inline my-2 my-lg-0" id="navBarWidth">
           <input
