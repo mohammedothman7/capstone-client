@@ -18,7 +18,7 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
     .then((newUser) => {
       const tweakedUser = { ...newUser };
       dispatch(registerUser(tweakedUser));
-      ownProps.history.push(`/users/${newUser.id}`);
+      ownProps.history.push(`/login`);
     })
     .catch((err) => console.log(err));
 };
