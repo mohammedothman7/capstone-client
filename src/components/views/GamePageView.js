@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AddCommentFormContainer } from "../containers";
 
 const GamePageView = (props) => {
-  console.log(">>>>>>" + Array.isArray(props.game.stores));
-  console.log("<<<<<<<<<" + Array.isArray(props.comments));
+
   return (
     <div className="game-info">
       <Link to="/">
@@ -19,10 +19,11 @@ const GamePageView = (props) => {
       <h3>
         rating: {props.game.rating}/{props.game.rating_top}
       </h3>
+      <AddCommentFormContainer gameId={props.gameId} />
       <div>
         {props.comments.map((comment) => (
           <div className="comment" key={comment.id}>
-            <p>Content: {comment.commentContent}</p>{" "}
+            <p>Content: {comment.commentContent}</p>{" "}    
             <h5>Username: {comment.user.username}</h5>
           </div>
         ))}

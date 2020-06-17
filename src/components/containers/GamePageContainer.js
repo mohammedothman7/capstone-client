@@ -10,7 +10,13 @@ class GamePageContainer extends Component {
   };
 
   render() {
-    return <GamePageView game={this.props.game} comments={this.props.comments}/>;
+    return (
+      <GamePageView
+        game={this.props.game}
+        comments={this.props.comments}
+        gameId={this.props.match.params.id}
+      />
+    );
   }
 }
 

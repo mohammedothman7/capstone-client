@@ -28,11 +28,23 @@ export const fetchCommentsThunk = (gameId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const addCommentThunk = (newComment) => (dispatch) => {
+  return axios
+    .post(`/api/comments/${newComment.gameId}`, newComment)
+    .then((res) => res.data)
+    .then((newComment) => {
+      dispatch(addComment(newComment));
+    })
+    .catch((err) => console.log(err));
+};
+
 //Reducer
 const reducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_COMMENTS:
       return action.payload;
+    case ADD_COMMENT:
+      return [...state, action.payload];
     default:
       return state;
   }

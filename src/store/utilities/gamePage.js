@@ -2,7 +2,6 @@ import axios from "axios";
 
 //Action Types
 const FETCH_GAME = "FETCH_GAME";
-const ADD_COMMENT = "ADD_COMMENT";
 
 //Action Creators
 const fetchGame = (game) => {
@@ -11,13 +10,6 @@ const fetchGame = (game) => {
     payload: game,
   };
 };
-
-const addComment = (comment) => {
-  return {
-    type: ADD_COMMENT,
-    payload: comment,
-  }
-}
 
 //Thunk Creators
 export const fetchGameThunk = (id) => (dispatch) => {
