@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function AllGamesView(props) {
   return (
@@ -13,7 +13,7 @@ function AllGamesView(props) {
               <img
                 alt={game.name}
                 src={game.background_image}
-                style={{ maxWidth: '200px', maxHeight: '200px' }}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
               />
             </div>
           );

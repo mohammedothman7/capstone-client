@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Action Types
-const FETCH_ALL_GAMES = 'FETCH_ALL_GAMES';
+const FETCH_ALL_GAMES = "FETCH_ALL_GAMES";
 
 // Action Creators
 const fetchAllGames = (games) => {
@@ -15,7 +15,7 @@ const fetchAllGames = (games) => {
 export const fetchAllGamesThunk = (filter) => (dispatch) => {
   //console.log({ filter });
   return axios
-    .get('/api/games', {
+    .get("/api/games", {
       params: {
         // Send params to backend to fetch from API
         ...filter,
