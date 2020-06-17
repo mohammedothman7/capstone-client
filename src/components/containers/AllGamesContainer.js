@@ -42,6 +42,9 @@ export class AllGamesContainer extends Component {
     if (filter.page === -1) {
       // Modify page in the copy of the state
       param['page'] = param.page + 1;
+    } else if (filter.page === -2) {
+      // Decrement page if equal to -2
+      param['page'] = param.page - 1;
     }
 
     // Call Thunk to fetch games from API
