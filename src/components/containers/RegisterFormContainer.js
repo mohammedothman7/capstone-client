@@ -53,5 +53,3 @@ RegisterFormContainer.propTypes = {
 };
 
 export default connect(null, mapDispatch)(RegisterFormContainer);
-
-//export default RegisterFormContainer;
