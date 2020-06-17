@@ -15,8 +15,13 @@ const NavBarView = (props) => {
             className="form-control mr-sm-2 ml-3"
             type="search"
             placeholder="Search"
+            value={props.search}
+            onChange={props.handleChange}
           ></input>
-          <button className="btn btn-outline-danger my-2 my-sm-0">
+          <button
+            className="btn btn-outline-danger my-2 my-sm-0"
+            onClick={props.handleClick}
+          >
             Search
           </button>
         </form>

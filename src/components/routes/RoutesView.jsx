@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import {
   LoginFormContainer,
   RegisterFormContainer,
-  AboutContainer,
   AllGamesContainer,
+  AboutContainer,
 } from "../containers";
 
 const RoutesView = () => {
