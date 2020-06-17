@@ -2,3 +2,4 @@
 export { default as LoginFormContainer } from "./LoginFormContainer";
 export { default as RegisterFormContainer } from "./RegisterFormContainer";
 export { default as NavBarContainer } from "./NavBarContainer";
+export { default as AboutContainer} from "./AboutContainer";

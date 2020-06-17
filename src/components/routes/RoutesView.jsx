@@ -4,6 +4,7 @@ import {
   NavBarContainer,
   LoginFormContainer,
   RegisterFormContainer,
+  AboutContainer,
 } from "../containers";
 
 const RoutesView = () => {
@@ -12,6 +13,7 @@ const RoutesView = () => {
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/register" component={RegisterFormContainer} />
       <Route exact path="/login" component={LoginFormContainer} />
+      <Route exact path="/about" component={AboutContainer} />
     </Switch>
   );
 };
