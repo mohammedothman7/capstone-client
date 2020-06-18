@@ -10,7 +10,7 @@ export class AllGamesContainer extends Component {
       games: [],
       filter: {
         page: 1,
-        page_size: 40,
+        page_size: 21,
       },
     };
   }
@@ -18,11 +18,15 @@ export class AllGamesContainer extends Component {
   componentDidMount() {
     // Call thunk to fetch games from API
     this.props.fetchAllGames(this.state.filter);
-
+   
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
     this.setState({ games });
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   // Sends the params to state, so it can be sent to backend for API call

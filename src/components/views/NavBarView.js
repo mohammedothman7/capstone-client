@@ -8,7 +8,9 @@ const NavBarView = (props) => {
       <nav className="container navbar navbar-expand-lg navbar-light bg-light">
         <div className="d-flex">
         <div className="logo2 mr-1"> </div>
+        <Link to="/" className = "nounderline">
         <h3 className="text-danger">GameCord</h3>
+        </Link>
         </div>
         <form className="form-inline my-2 my-lg-0" id="navBarWidth">
           <input
@@ -20,7 +22,7 @@ const NavBarView = (props) => {
             Search
           </button>
         </form>
-        <div class="ml-auto p-1">
+        <div className="ml-auto p-1">
           <Link to="/login" className="btn btn-outline-danger">
             Login
           </Link>

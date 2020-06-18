@@ -1,0 +1,25 @@
+
+.parentContainer > * {
+    cursor: pointer;
+    pointer-events: auto;
+    transition: 300ms opacity, 300ms transform;
+}
+.parentContainer:hover > *:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+.loader{
+    background:url('logoArt.png');
+    background-size:cover;
+    height:10vh;
+    width:10vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
