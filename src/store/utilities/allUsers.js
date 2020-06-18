@@ -25,20 +25,27 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
     .then((res) => res.data)
     .then((newUser) => {
       const tweakedUser = { ...newUser };
+      console.log(tweakedUser);
       dispatch(registerUser(tweakedUser));
       ownProps.history.push(`/login`);
     })
     .catch((err) => console.log(err));
 };
 
-export const loginThunk = (user, ownProps) => (dispatch) => {
-  return axios.get("/api/users", user).then((res) => {
-    if (res.status !== 404) {
-      ownProps.history.push("/");
-    } else {
-      alert("Username or password is incorrect.");
-    }
-  });
+export const loginThunk = (username, password, ownProps) => (dispatch) => {
+  return axios
+    .get(`/api/users/${username}/${password}`)
+    .then((res) => res.data)
+    .then((user) => {
+      const loggedUser = { ...user };
+      if (Object.keys(loggedUser).length === 0) {
+        console.log("FAIL");
+      } else {
+        console.log(loggedUser);
+        dispatch(login(loggedUser));
+        ownProps.history.push(`/loginNav`);
+      }
+    });
 };
 
 // REDUCER
@@ -47,6 +54,7 @@ const reducer = (state = [], action) => {
     case REGISTER_USER:
       return [...state, action.payload];
     case LOGIN:
+      console.log("login payload", action.payload);
       return action.payload;
     default:
       return state;

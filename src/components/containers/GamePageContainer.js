@@ -10,6 +10,7 @@ class GamePageContainer extends Component {
   };
 
   render() {
+    console.log("................", this.props.user)
     return <GamePageView game={this.props.game} comments={this.props.comments}/>;
   }
 }
@@ -19,6 +20,7 @@ const mapState = (state) => {
   return {
     game: state.game,
     comments: state.comments,
+    user: state.allUsers
   };
 };
 

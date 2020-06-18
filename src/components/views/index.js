@@ -4,6 +4,5 @@ export { default as LoginFormView } from "./LoginFormView";
 export { default as RegisterFormView } from "./RegisterFormView";
 export { default as AllGamesView } from "./AllGamesView";
 export { default as NavBarView } from "./NavBarView";
+export { default as LoggedInNavBarView } from "./LoggedInNavBarView";
 export { default as AboutView } from "./AboutView";
-
- 

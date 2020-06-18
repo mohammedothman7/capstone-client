@@ -10,6 +10,7 @@ class LoginFormContainer extends Component {
     this.state = {
       username: "",
       password: "",
+      user: "",
     };
   }
 
@@ -21,7 +22,11 @@ class LoginFormContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state.username, this.state.password);
+    const user = this.props.user;
+    this.setState({
+      user,
+    });
   };
 
   render() {
@@ -36,9 +41,20 @@ class LoginFormContainer extends Component {
   }
 }
 
+const mapState = (state) => {
+  console.log(state);
+  const user = state.allUsers;
+  console.log(user);
+  return {
+    user: user,
+  };
+};
+
 const mapDispatch = (dispatch, ownProps) => {
   return {
-    login: (user) => dispatch(loginThunk(user, ownProps)),
+    login: (username, password) => {
+      dispatch(loginThunk(username, password, ownProps));
+    },
   };
 };
 
@@ -46,4 +62,4 @@ LoginFormContainer.propTypes = {
   login: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatch)(LoginFormContainer);
+export default connect(mapState, mapDispatch)(LoginFormContainer);

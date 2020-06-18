@@ -14,13 +14,12 @@ export class AllGamesContainer extends Component {
         page_size: 21,
       },
     };
-  
   }
 
   componentDidMount() {
     // Call thunk to fetch games from API
     this.props.fetchAllGames(this.state.filter);
-   
+
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
@@ -47,22 +46,23 @@ export class AllGamesContainer extends Component {
 
     if (filter.page === -1) {
       // Modify page in the copy of the state
-      param['page'] = param.page + 1;
+      param["page"] = param.page + 1;
     } else if (filter.page === -2) {
-      if (param.page <= 1) return;
       // Decrement page if equal to -2
-      param['page'] = param.page - 1;
+      param["page"] = param.page - 1;
     }
 
     // Call Thunk to fetch games from API
     this.props.fetchAllGames(param);
   };
 
- navigateTo(){
-  window.location.href="/gamePage/2"
- }
+//  navigateTo(e){
+//    let id =e.target.key; 
+//   window.location.href=`/gamePage/${id}`;
+//  }
 
   render() {
+    console.log("user information here*****", this.props.user)
     return (
       <div>
         <AllGamesView
@@ -82,6 +82,7 @@ const mapState = (state) => {
   //console.log('In mapState');
   return {
     allGames: state.allGames,
+    user: state.allUsers
   };
 };
 

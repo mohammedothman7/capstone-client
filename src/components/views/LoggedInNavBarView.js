@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/NavBarView.css";
 import { Link } from "react-router-dom";
 
-const NavBarView = (props) => {
+const LoggedInNavBarView = (props) => {
   return (
     <div className="container-fluid bg-light">
       <nav className="container navbar navbar-expand-lg navbar-light bg-light">
@@ -31,11 +31,8 @@ const NavBarView = (props) => {
           <Link to="/about" className="btn btn-outline-danger mr-4">
             About
           </Link>
-          <Link to="/login" className="btn btn-outline-danger ml-2">
-            Login
-          </Link>
-          <Link to="/register" className="btn btn-outline-danger ml-2">
-            Register
+          <Link to="$" className="btn btn-outline-danger ml-2">
+            Logout
           </Link>
         </div>
       </nav>
@@ -43,4 +40,4 @@ const NavBarView = (props) => {
   );
 };
 
-export default NavBarView;
+export default LoggedInNavBarView;
