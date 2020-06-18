@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-
+import { NavBarView } from "../views";
 import { AboutView } from "../views";
 
 class AboutContainer extends Component {
   render() {
-    return <AboutView />;
+    return (
+      <div>
+        <NavBarView />
+        <div>
+          <AboutView />
+        </div>
+      </div>
+    );
   }
 }
 

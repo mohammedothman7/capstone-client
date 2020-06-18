@@ -4,9 +4,9 @@ import {
   LoginFormContainer,
   RegisterFormContainer,
   AllGamesContainer,
-  NavBarContainer,
   AboutContainer,
   LoggedInNavBarContainer,
+  NavBarContainer,
 } from "../containers";
 
 const RoutesView = () => {
