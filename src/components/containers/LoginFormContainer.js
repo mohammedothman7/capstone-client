@@ -39,7 +39,7 @@ class LoginFormContainer extends Component {
 const mapDispatch = (dispatch, ownProps) => {
   return {
     login: (username, password) => {
-      dispatch(loginThunk(username, password));
+      dispatch(loginThunk(username, password, ownProps));
     },
   };
 };
