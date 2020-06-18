@@ -31,7 +31,7 @@ const LoggedInNavBarView = (props) => {
           <Link to="/about" className="btn btn-outline-danger mr-4">
             About
           </Link>
-          <Link to="$" className="btn btn-outline-danger ml-2">
+          <Link to="#" className="btn btn-outline-danger ml-2">
             Logout
           </Link>
         </div>
