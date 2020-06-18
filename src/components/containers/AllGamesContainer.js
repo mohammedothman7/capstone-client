@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AllGamesView } from "../views";
 import { fetchAllGamesThunk } from "../../thunks";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export class AllGamesContainer extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export class AllGamesContainer extends Component {
         page_size: 21,
       },
     };
+  
   }
 
   componentDidMount() {
@@ -55,6 +57,10 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
+ navigateTo(){
+  window.location.href="/about"
+ }
+
   render() {
     return (
       <div>
@@ -63,6 +69,7 @@ export class AllGamesContainer extends Component {
           filter={this.state.filter}
           handleFilter={this.handleFilter}
           fetchAllGames={this.props.fetchAllGames}
+          onClickDiv={this.navigateTo}
         ></AllGamesView>
       </div>
     );
