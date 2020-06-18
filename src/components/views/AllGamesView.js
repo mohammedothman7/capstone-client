@@ -3,9 +3,10 @@ import "./styles/AllGamesView.css"
 
 
 function AllGamesView(props) {
+  console.log(props.games);
   return (
     <div>
-    {props.games ? (
+    {props.games.length > 0? (
     <div>
     <div className="container-fluid">
     <div className="row">
@@ -74,8 +75,8 @@ function AllGamesView(props) {
    </div>
    </div>
    </div>):(
-     <div className="loader"></div>
-      )}
+           <div className="loader"></div>
+       )}
    </div>
   );
 }

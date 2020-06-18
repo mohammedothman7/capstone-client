@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 const GamePageView = (props) => {
   return (
     <div className="game-info">
+      {props.game.name ? ( 
+      <div>
       <Link to="/">
         <button>Home page</button>
       </Link>
@@ -13,6 +15,9 @@ const GamePageView = (props) => {
         website: <a href={props.game.website}>{props.game.website}</a>
       </h5>
       <p>{props.game.description_raw}</p>
+      </div>) : (
+        <div className="loader"></div>
+      )}
     </div>
   );
 };
