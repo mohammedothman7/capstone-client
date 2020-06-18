@@ -8,7 +8,7 @@ const NavBarView = (props) => {
       <nav className="container navbar navbar-expand-lg navbar-light bg-light">
         <div className="d-flex">
           <div className="logo2 mr-1"> </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/" className="nounderline">
             <h3 className="text-danger">GameCord</h3>
           </Link>
         </div>

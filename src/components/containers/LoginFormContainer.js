@@ -21,7 +21,7 @@ class LoginFormContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state.username, this.state.password);
   };
 
   render() {
@@ -38,7 +38,9 @@ class LoginFormContainer extends Component {
 
 const mapDispatch = (dispatch, ownProps) => {
   return {
-    login: (user) => dispatch(loginThunk(user, ownProps)),
+    login: (username, password) => {
+      dispatch(loginThunk(username, password));
+    },
   };
 };
 

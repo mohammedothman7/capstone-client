@@ -31,10 +31,10 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const loginThunk = (user, ownProps) => (dispatch) => {
-  return axios.get("/api/users", user).then((res) => {
+export const loginThunk = (username, password) => (dispatch) => {
+  return axios.get(`/api/users/${username}/${password}`).then((res) => {
     if (res.status !== 404) {
-      ownProps.history.push("/");
+      alert("Login success!");
     } else {
       alert("Username or password is incorrect.");
     }
