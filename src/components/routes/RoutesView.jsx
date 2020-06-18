@@ -10,7 +10,7 @@ import {
 const RoutesView = () => {
   return (
     <Switch>
-      <Route exact path="/" component={AllGamesContainer}></Route>
+      <Route exact path="/" component={AllGamesContainer} />
       <Route exact path="/register" component={RegisterFormContainer} />
       <Route exact path="/login" component={LoginFormContainer} />
       <Route exact path="/about" component={AboutContainer} />

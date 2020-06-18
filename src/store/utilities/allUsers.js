@@ -32,13 +32,21 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
 };
 
 export const loginThunk = (username, password) => (dispatch) => {
-  return axios.get(`/api/users/${username}/${password}`).then((res) => {
+  return axios
+    .get(`/api/users/${username}/${password}`)
+    .then((res) => res.data)
+    .then((user) => {
+      const tweakedUser = { ...user };
+      dispatch(login(tweakedUser));
+    })
+    .catch((err) => console.log(err));
+  /*
     if (res.status !== 404) {
       alert("Login success!");
     } else {
       alert("Username or password is incorrect.");
     }
-  });
+*/
 };
 
 // REDUCER

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { AllGamesView } from '../views';
-import { fetchAllGamesThunk } from '../../thunks';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { AllGamesView } from "../views";
+import { fetchAllGamesThunk } from "../../thunks";
+import { connect } from "react-redux";
 
 export class AllGamesContainer extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export class AllGamesContainer extends Component {
   componentDidMount() {
     // Call thunk to fetch games from API
     this.props.fetchAllGames(this.state.filter);
-   
+
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
@@ -45,11 +45,10 @@ export class AllGamesContainer extends Component {
 
     if (filter.page === -1) {
       // Modify page in the copy of the state
-      param['page'] = param.page + 1;
+      param["page"] = param.page + 1;
     } else if (filter.page === -2) {
-      if (param.page <= 1) return;
       // Decrement page if equal to -2
-      param['page'] = param.page - 1;
+      param["page"] = param.page - 1;
     }
 
     // Call Thunk to fetch games from API
