@@ -1,14 +1,23 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import {GamePageContainer} from "../containers";
-
+import {
+  LoginFormContainer,
+  RegisterFormContainer,
+  AllGamesContainer,
+  AboutContainer,
+  GamePageContainer
+} from "../containers";
 
 const RoutesView = () => {
-    return (
-        <Switch>
-            <Route exact path="/gamePage/:id" component={GamePageContainer} />
-        </Switch>
-    )
+  return (
+    <Switch>
+      <Route exact path="/" component={AllGamesContainer}></Route>
+      <Route exact path="/register" component={RegisterFormContainer} />
+      <Route exact path="/login" component={LoginFormContainer} />
+      <Route exact path="/about" component={AboutContainer} />
+      <Route exact path="/gamePage/:id" component={GamePageContainer} />
+    </Switch>
+  );
 };
 
 export default RoutesView;
