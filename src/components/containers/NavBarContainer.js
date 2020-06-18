@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavBarView } from "../views";
-import { AllGamesContainer } from ".";
+import { AllGamesContainer } from "./AllGamesContainer";
 
 class NavBarContainer extends Component {
   render() {
