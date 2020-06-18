@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { AllGamesView } from '../views';
-import { fetchAllGamesThunk } from '../../thunks';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { AllGamesView } from "../views";
+import { fetchAllGamesThunk, fetchGenreGamesThunk } from "../../thunks";
+import { connect } from "react-redux";
 
 export class AllGamesContainer extends Component {
   constructor(props) {
@@ -11,12 +11,15 @@ export class AllGamesContainer extends Component {
       filter: {
         page: 1,
         page_size: 21,
+        ordering: "",
+        dates: "",
       },
     };
   }
 
   componentDidMount() {
     // Call thunk to fetch games from API
+
     this.props.fetchAllGames(this.state.filter);
 
     // Store all games from redux store in games variable
@@ -41,15 +44,19 @@ export class AllGamesContainer extends Component {
 
     if (filter.page === -1) {
       // Modify page in the copy of the state
-      param['page'] = param.page + 1;
+      param["page"] = param.page + 1;
     } else if (filter.page === -2) {
       if (param.page <= 1) return;
       // Decrement page if equal to -2
-      param['page'] = param.page - 1;
+      param["page"] = param.page - 1;
     }
 
     // Call Thunk to fetch games from API
     this.props.fetchAllGames(param);
+  };
+
+  handleGenre = (event) => {
+    this.props.fetchGenreGames(event.target.value);
   };
 
   render() {
@@ -58,8 +65,9 @@ export class AllGamesContainer extends Component {
         <AllGamesView
           games={this.props.allGames}
           filter={this.state.filter}
-          handleFilter={this.handleFilter}
           fetchAllGames={this.props.fetchAllGames}
+          handleFilter={this.handleFilter}
+          handleGenre={this.handleGenre}
         ></AllGamesView>
       </div>
     );
@@ -71,6 +79,7 @@ const mapState = (state) => {
   //console.log('In mapState');
   return {
     allGames: state.allGames,
+    genre: state.allGames,
   };
 };
 
@@ -79,6 +88,7 @@ const mapDispatch = (dispatch) => {
   //console.log('In mapDispatch');
   return {
     fetchAllGames: (params) => dispatch(fetchAllGamesThunk(params)),
+    fetchGenreGames: (genre) => dispatch(fetchGenreGamesThunk(genre)),
   };
 };
 
