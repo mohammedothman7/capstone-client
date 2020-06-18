@@ -1,12 +1,20 @@
 import axios from "axios";
 
 const REGISTER_USER = "REGISTER_USER";
+const LOGIN = "LOGIN";
 
 // ACTION CREATORS;
 
 const registerUser = (user) => {
   return {
     type: REGISTER_USER,
+    payload: user,
+  };
+};
+
+const login = (user) => {
+  return {
+    type: LOGIN,
     payload: user,
   };
 };
@@ -30,10 +38,12 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
     .then((res) => res.data)
     .then((user) => {
       const loggedUser = { ...user };
-      if (Object.keys(loggedUser).length == 0) {
+      if (Object.keys(loggedUser).length === 0) {
         console.log("FAIL");
       } else {
         console.log(loggedUser);
+        dispatch(login(loggedUser.firstName));
+        ownProps.history.push(`/loginNav`);
       }
     });
 };
@@ -43,6 +53,8 @@ const reducer = (state = [], action) => {
   switch (action.type) {
     case REGISTER_USER:
       return [...state, action.payload];
+    case LOGIN:
+      return action.payload;
     default:
       return state;
   }

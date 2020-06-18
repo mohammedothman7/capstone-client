@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { NavBarView } from "../views";
+import { AllGamesContainer } from ".";
 
 class NavBarContainer extends Component {
   render() {
-    return <NavBarView />;
+    return (
+      <div>
+        <NavBarView />
+        <div>
+          <AllGamesContainer />
+        </div>
+      </div>
+    );
   }
 }
 
