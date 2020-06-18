@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { AllGamesView } from '../views';
-import { fetchAllGamesThunk } from '../../thunks';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { AllGamesView } from "../views";
+import { fetchAllGamesThunk } from "../../thunks";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export class AllGamesContainer extends Component {
   constructor(props) {
@@ -13,16 +14,21 @@ export class AllGamesContainer extends Component {
         page_size: 21,
       },
     };
+  
   }
 
   componentDidMount() {
     // Call thunk to fetch games from API
     this.props.fetchAllGames(this.state.filter);
-
+   
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
     this.setState({ games });
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   // Sends the params to state, so it can be sent to backend for API call
@@ -52,6 +58,10 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
+ navigateTo(){
+  window.location.href="/gamePage/2"
+ }
+
   render() {
     return (
       <div>
@@ -60,6 +70,7 @@ export class AllGamesContainer extends Component {
           filter={this.state.filter}
           handleFilter={this.handleFilter}
           fetchAllGames={this.props.fetchAllGames}
+          onClickDiv={this.navigateTo}
         ></AllGamesView>
       </div>
     );

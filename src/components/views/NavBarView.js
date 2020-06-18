@@ -7,10 +7,10 @@ const NavBarView = (props) => {
     <div className="container-fluid bg-light">
       <nav className="container navbar navbar-expand-lg navbar-light bg-light">
         <div className="d-flex">
-          <div className="logo2 mr-1"> </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <h3 className="text-danger">GameCord</h3>
-          </Link>
+        <div className="logo2 mr-1"> </div>
+        <Link to="/" className = "nounderline">
+        <h3 className="text-danger">GameCord</h3>
+        </Link>
         </div>
         <form className="form-inline my-2 my-lg-0" id="navBarWidth">
           <input
