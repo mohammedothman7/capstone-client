@@ -13,8 +13,10 @@ class AddCommentFormContainer extends Component {
     };
   }
 
-  componentDidMount () { 
-      this.setState({gameId: this.props.gameId, userId: 2});
+  componentDidMount() {
+    // this.setState({gameId: this.props.match.params.id, userId: 2});
+    this.setState({ gameId: this.props.gameId, userId: 2 });
+    console.log("this is addcommentform  didmount");
   }
 
   handleChange = (e) => {
@@ -27,17 +29,17 @@ class AddCommentFormContainer extends Component {
   };
 
   render() {
-    console.log("++++++++++++" + this.state.gameId);
-    if (!this.state.userId) return (<div>please log in to add comment</div>)
-    else 
+    console.log("this addcommentformcontainer");
+    if (!this.state.userId) return <div>please log in to add comment</div>;
+    else
       return (
-      <AddCommentFormView
-        gameId={this.state.gameId}
-        commentContent={this.state.commentContent}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
-    );
+        <AddCommentFormView
+          gameId={this.state.gameId}
+          commentContent={this.state.commentContent}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      );
   }
 }
 

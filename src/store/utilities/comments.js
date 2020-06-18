@@ -34,6 +34,10 @@ export const addCommentThunk = (newComment) => (dispatch) => {
     .then((res) => res.data)
     .then((newComment) => {
       dispatch(addComment(newComment));
+      console.log("~~~~~~~~~~~~" + newComment);
+      console.log("this is addcommentthunk" + newComment.user.username);
+      
+      // ownProps.history.push(`/gamePage/${newComment.gameId}`)
     })
     .catch((err) => console.log(err));
 };

@@ -5,7 +5,7 @@ const AddCommentFormView = (props) => {
     <div className="comment-form">
       <form onSubmit={props.handleSubmit}>
         <textarea
-          name="addComment"
+          name="commentContent"
           value={props.commentContent}
           onChange={props.handleChange}
           rows="4"

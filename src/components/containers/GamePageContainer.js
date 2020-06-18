@@ -7,9 +7,11 @@ class GamePageContainer extends Component {
   componentDidMount = () => {
     this.props.fetchGame(this.props.match.params.id);
     this.props.fetchComment(this.props.match.params.id);
+    console.log("this is gamepagecontainer didmount");
   };
 
   render() {
+    console.log("this is gamepagecontainer");
     return (
       <GamePageView
         game={this.props.game}
