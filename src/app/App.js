@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import "./App.css";
 import RoutesContainer from "../components/routes/RoutesContainer";
+import { NavBarContainer } from "../components/containers";
+import "./App.css";
 
 class App extends Component {
   render() {
-    return <div>
-      <RoutesContainer />
-    </div>;
+    return (
+      <div className="app">
+        <NavBarContainer />
+        <header>
+          <RoutesContainer />
+        </header>
+      </div>
+    );
   }
 }
 
