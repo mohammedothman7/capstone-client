@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchGameThunk } from "../../thunks";
 import { GamePageView } from "../views";
+import { NavBarView } from "../views";
 
 class GamePageContainer extends Component {
   componentDidMount = () => {
@@ -9,12 +10,20 @@ class GamePageContainer extends Component {
   };
 
   render() {
-    return <GamePageView game={this.props.game} />;
+    return (
+      <div>
+        <NavBarView />
+        <div>
+          <GamePageView game={this.props.game} />)
+        </div>
+      </div>
+    );
   }
 }
 
 //map state to props
 const mapState = (state) => {
+  console.log(state.game);
   return {
     game: state.game,
   };
