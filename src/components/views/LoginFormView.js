@@ -44,8 +44,8 @@ const LoginFormView = (props) => {
 LoginFormView.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-  username: PropTypes.func.isRequired,
-  password: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
 };
 
 export default LoginFormView;

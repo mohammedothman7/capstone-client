@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { AllGamesView } from "../views";
-import { fetchAllGamesThunk, fetchGenreGamesThunk } from "../../thunks";
+import { fetchAllGamesThunk } from "../../thunks";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export class AllGamesContainer extends Component {
   constructor(props) {
@@ -11,21 +12,22 @@ export class AllGamesContainer extends Component {
       filter: {
         page: 1,
         page_size: 21,
-        ordering: "",
-        dates: "",
       },
     };
   }
 
   componentDidMount() {
     // Call thunk to fetch games from API
-
     this.props.fetchAllGames(this.state.filter);
 
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
     this.setState({ games });
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   // Sends the params to state, so it can be sent to backend for API call
@@ -55,9 +57,9 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
-  handleGenre = (event) => {
-    this.props.fetchGenreGames(event.target.value);
-  };
+  navigateTo() {
+    window.location.href = "/gamePage/2";
+  }
 
   render() {
     return (
@@ -65,9 +67,9 @@ export class AllGamesContainer extends Component {
         <AllGamesView
           games={this.props.allGames}
           filter={this.state.filter}
-          fetchAllGames={this.props.fetchAllGames}
           handleFilter={this.handleFilter}
-          handleGenre={this.handleGenre}
+          fetchAllGames={this.props.fetchAllGames}
+          onClickDiv={this.navigateTo}
         ></AllGamesView>
       </div>
     );
@@ -79,7 +81,6 @@ const mapState = (state) => {
   //console.log('In mapState');
   return {
     allGames: state.allGames,
-    genre: state.allGames,
   };
 };
 
@@ -88,7 +89,6 @@ const mapDispatch = (dispatch) => {
   //console.log('In mapDispatch');
   return {
     fetchAllGames: (params) => dispatch(fetchAllGamesThunk(params)),
-    fetchGenreGames: (genre) => dispatch(fetchGenreGamesThunk(genre)),
   };
 };
 

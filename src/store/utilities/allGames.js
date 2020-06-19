@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Action Types
 const FETCH_ALL_GAMES = "FETCH_ALL_GAMES";
-const FETCH_GENRE_GAMES = "FETCH_GENRE_GAMES";
+const FETCH_SEARCHED_GANES = "FETCH_SEARCHED_GANES";
 
 // Action Creators
 const fetchAllGames = (games) => {
@@ -12,10 +12,10 @@ const fetchAllGames = (games) => {
   };
 };
 
-const fetchGenreGames = (genres) => {
+const fetchSearchedGames = (games) => {
   return {
-    type: FETCH_GENRE_GAMES,
-    payload: genres,
+    type: FETCH_SEARCHED_GANES,
+    payload: games,
   };
 };
 
@@ -33,22 +33,23 @@ export const fetchAllGamesThunk = (filter) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const fetchGenreGamesThunk = (genres) => (dispatch) => {
+export const fetchSearchedGamesThunk = (search) => (dispatch) => {
   return axios
-    .get("/api/games/genres", {
+    .get("/api/games/search", {
       params: {
-        genres,
+        search,
       },
     })
-    .then((res) => dispatch(fetchGenreGames(res.data)))
+    .then((res) => dispatch(fetchSearchedGames(res.data)))
     .catch((err) => console.log(err));
 };
+
 // Reducer
 const reducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_ALL_GAMES:
       return action.payload;
-    case FETCH_GENRE_GAMES:
+    case FETCH_SEARCHED_GANES:
       return action.payload;
     default:
       return state;
