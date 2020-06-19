@@ -9,10 +9,10 @@ function AllGamesView(props) {
         <div>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-2 ">
-                <br></br>
-                <br></br>
-                <br></br>
+              <div className="col-2">
+                <br />
+                <br />
+                <br />
                 <div className="ml-4">
                   <h3 className="text-danger text-center">Top</h3>
                   <button className="btn btn-outline-danger btn-block">
@@ -48,16 +48,28 @@ function AllGamesView(props) {
                     Adventure
                   </button>
                   <button className="btn btn-outline-danger btn-block">
+                    Horror
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Platformer
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
                     Puzzle
                   </button>
                   <button className="btn btn-outline-danger btn-block">
                     Racing
                   </button>
                   <button className="btn btn-outline-danger btn-block">
-                    RPG
+                    Rhythm
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Role-Playing
                   </button>
                   <button className="btn btn-outline-danger btn-block">
                     Shooter
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Sports
                   </button>
                   <button className="btn btn-outline-danger btn-block">
                     Strategy
