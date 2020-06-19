@@ -40,6 +40,25 @@ function AllGamesView(props) {
                 </div>
 
                 <div className="ml-4 pt-4 mt-5">
+                  <h3 className="text-danger text-center">Platforms</h3>
+                  <button className="btn btn-outline-danger btn-block">
+                    Playstation
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    XBox
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Nintendo
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Mac
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    PC
+                  </button>
+                </div>
+
+                <div className="ml-4 pt-4 mt-5">
                   <h3 className="text-danger text-center">Genres</h3>
                   <button className="btn btn-outline-danger btn-block">
                     Action
