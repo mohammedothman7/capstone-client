@@ -29,6 +29,7 @@ export const fetchCommentsThunk = (gameId) => (dispatch) => {
 };
 
 export const addCommentThunk = (newComment) => (dispatch) => {
+  console.log("++++++++", newComment.user.username);
   return axios
     .post(`/api/comments/${newComment.gameId}`, newComment)
     .then((res) => res.data)

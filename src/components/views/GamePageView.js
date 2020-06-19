@@ -20,13 +20,14 @@ const GamePageView = (props) => {
       <h3>
         rating: {props.game.rating}/{props.game.rating_top}
       </h3>
-      <AddCommentFormContainer gameId={props.gameId} />
+      {/* <AddCommentFormContainer gameId={props.gameId} /> */}
       {/* <Link to={`/gamePage/${props.gameId}/comment`}><button>add a comment</button></Link> */}
       <div>
         {props.comments.map((comment) => (
           <div className="comment" key={comment.id}>
+            {console.log("keyid" , comment.id)}
             <p>Content: {comment.commentContent}</p>{" "}    
-            {/* <h5>Username: {comment.user.username}</h5> */}
+            <h5>Username: {comment.user.username}</h5>
           </div>
         ))}
       </div>

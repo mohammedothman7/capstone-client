@@ -1,6 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { GamePageContainer, AddCommentFormContainer } from "../containers";
+import {
+  LoginFormContainer,
+  RegisterFormContainer,
+  AllGamesContainer,
+  AboutContainer,
+  GamePageContainer,
+  LoggedInNavBarContainer,
+  NavBarContainer,
+} from "../containers";
 
 const RoutesView = () => {
   return (
@@ -10,7 +18,12 @@ const RoutesView = () => {
         path="/gamePage/:id/comment"
         component={AddCommentFormContainer}
       /> */}
-      <Route exact path="/gamePage/:id" component={GamePageContainer}/>
+      <Route exact path="/" component={NavBarContainer} />
+      <Route exact path="/register" component={RegisterFormContainer} />
+      <Route exact path="/login" component={LoginFormContainer} />
+      <Route exact path="/about" component={AboutContainer} />
+      <Route exact path="/gamePage/:id" component={GamePageContainer} />
+      <Route exact path="/loginNav" component={LoggedInNavBarContainer} />
     </Switch>
   );
 };
