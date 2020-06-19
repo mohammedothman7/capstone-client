@@ -14,38 +14,59 @@ function AllGamesView(props) {
                 <br></br>
                 <br></br>
                 <div className="ml-4">
-                  <h3 className="text-danger">Top</h3>
-                  <button className="btn btn-outline-danger">
+                  <h3 className="text-danger text-center">Top</h3>
+                  <button className="btn btn-outline-danger btn-block">
                     Popular in 2020
                   </button>
-                  <button className="btn btn-outline-danger">
+                  <button className="btn btn-outline-danger btn-block">
                     All Time Greatest
                   </button>
-                  <button className="btn btn-outline-danger">Top Rated</button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Top Rated
+                  </button>
                 </div>
 
-                <div className="ml-4 pt-4">
-                  <h3 className="text-danger">New Releases</h3>
-                  <button className="btn btn-outline-danger">This week</button>
-                  <button className="btn btn-outline-danger">Next week</button>
-                  <button className="btn btn-outline-danger">
+                <div className="ml-4 pt-4 mt-5">
+                  <h3 className="text-danger text-center">New Releases</h3>
+                  <button className="btn btn-outline-danger btn-block">
+                    This week
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Next week
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
                     Last 30 days
                   </button>
                 </div>
 
-                <div className="ml-4 pt-4">
-                  <h3 className="text-danger">Genres</h3>
-                  <button className="btn btn-outline-danger">Action</button>
-                  <button className="btn btn-outline-danger">RPG</button>
-                  <button className="btn btn-outline-danger">Racing</button>
-                  <button className="btn btn-outline-danger">Shooter</button>
-                  <button className="btn btn-outline-danger">Adventure</button>
-                  <button className="btn btn-outline-danger">Puzzle</button>
-                  <button className="btn btn-outline-danger">Strategy</button>
+                <div className="ml-4 pt-4 mt-5">
+                  <h3 className="text-danger text-center">Genres</h3>
+                  <button className="btn btn-outline-danger btn-block">
+                    Action
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Adventure
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Puzzle
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Racing
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    RPG
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Shooter
+                  </button>
+                  <button className="btn btn-outline-danger btn-block">
+                    Strategy
+                  </button>
                 </div>
               </div>
+
               <div className="col-10">
-                <select className="btn btn-outline-danger mt-2">
+                <select className="btn btn-outline-danger mt-4">
                   <option value="trending">Trending</option>
                   <option value="Most Liked">Most Liked</option>
                   <option value="Best Rating">Release Date</option>
@@ -62,11 +83,11 @@ function AllGamesView(props) {
                         >
                           <div className="card">
                             <img
-                              className="card-img-top"
+                              className="card-img-top game-image"
                               alt={game.name}
                               src={game.background_image}
                             />
-                            <div className="card-body">
+                            <div className="card-body game-title">
                               <h5 className="card-title">{game.name}</h5>
                             </div>
                           </div>
