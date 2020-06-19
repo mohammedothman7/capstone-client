@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import {
   LoginFormContainer,
   RegisterFormContainer,
-  AllGamesContainer,
   AboutContainer,
   GamePageContainer,
   LoggedInNavBarContainer,
@@ -13,11 +12,6 @@ import {
 const RoutesView = () => {
   return (
     <Switch>
-      {/* <Route
-        exact
-        path="/gamePage/:id/comment"
-        component={AddCommentFormContainer}
-      /> */}
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/register" component={RegisterFormContainer} />
       <Route exact path="/login" component={LoginFormContainer} />

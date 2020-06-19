@@ -5,7 +5,6 @@ import { AddCommentFormContainer } from "../containers";
 const GamePageView = (props) => {
   console.log("this is gamepageview");
   return (
-    
     <div className="game-info">
       <Link to="/">
         <button>Home page</button>
@@ -20,17 +19,19 @@ const GamePageView = (props) => {
       <h3>
         rating: {props.game.rating}/{props.game.rating_top}
       </h3>
-      {/* <AddCommentFormContainer gameId={props.gameId} /> */}
       {/* <Link to={`/gamePage/${props.gameId}/comment`}><button>add a comment</button></Link> */}
       <div>
         {props.comments.map((comment) => (
           <div className="comment" key={comment.id}>
-            {console.log("keyid" , comment.id)}
-            <p>Content: {comment.commentContent}</p>{" "}    
+            {console.log("keyid", comment.id)}
+            <p>Content: {comment.commentContent}</p>{" "}
             <h5>Username: {comment.user.username}</h5>
+            {comment.createdAt ? <h5>Date: {comment.createdAt}</h5> : null}
           </div>
         ))}
       </div>
+
+      <AddCommentFormContainer gameId={props.game.id} />
     </div>
   );
 };

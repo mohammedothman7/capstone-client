@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchGameThunk, fetchCommentsThunk } from "../../thunks";
 import { GamePageView } from "../views";
-import { AddCommentFormContainer } from "../containers";
+
 class GamePageContainer extends Component {
   componentDidMount = () => {
     console.log("this is gamepagecontainer didmount");
@@ -11,14 +11,12 @@ class GamePageContainer extends Component {
   };
 
   render() {
+    console.log("this is gamepagecontainer", this.props.user.id);
     return (
-      <div>
       <GamePageView
         game={this.props.game}
         comments={this.props.comments}
       />
-      <AddCommentFormContainer gameId={this.props.match.params.id} />
-      </div>
     );
   }
 }
