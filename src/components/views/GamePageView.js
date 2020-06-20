@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
 const GamePageView = (props) => {
-  console.log("view Props", props);
+  console.log("This is GamePageView --- view Props", props);
   return (
     <div>
 
@@ -82,6 +82,8 @@ const GamePageView = (props) => {
                   {/* <button className="btn  btn-outline-danger ml-auto">
                     <i class="far fa-thumbs-up fa-2x"></i>
                   </button> */}
+
+                <h1>Like count: {props.likes.count}</h1>
                 </div>
 
 
