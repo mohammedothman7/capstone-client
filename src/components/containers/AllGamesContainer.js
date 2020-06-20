@@ -57,15 +57,6 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
-  navigateTo() {
-    window.location.href = "/gamePage/2";
-  }
-
-  //  navigateTo(e){
-  //    let id =e.target.key;
-  //   window.location.href=`/gamePage/${id}`;
-  //  }
-
   render() {
     console.log("user information here*****", this.props.user);
     return (
@@ -75,7 +66,6 @@ export class AllGamesContainer extends Component {
           filter={this.state.filter}
           handleFilter={this.handleFilter}
           fetchAllGames={this.props.fetchAllGames}
-          onClickDiv={this.navigateTo}
         ></AllGamesView>
       </div>
     );
