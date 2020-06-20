@@ -38,6 +38,7 @@ class AddCommentFormContainer extends Component {
 
   render() {
     console.log("this addcommentformcontainer");
+
     if (!this.state.userId)
       return (
         <div>

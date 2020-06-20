@@ -12,7 +12,7 @@ const AddCommentFormView = (props) => {
           cols="50"
           required
         ></textarea>
-       <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
