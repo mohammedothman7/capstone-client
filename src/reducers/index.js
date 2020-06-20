@@ -4,3 +4,4 @@ export { default as game } from "../store/utilities/gamePage";
 export { default as comments } from "../store/utilities/comments";
 export { default as allUsers } from "../store/utilities/allUsers";
 export { default as allGames } from "../store/utilities/allGames";
+export { default as screenshot } from "../store/utilities/screenShots";

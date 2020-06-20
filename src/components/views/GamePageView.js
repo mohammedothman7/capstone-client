@@ -1,61 +1,179 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./styles/GamePageView.css";
-import { AddCommentFormContainer } from "../containers";
+import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.css";
+import ReadMoreReact from "read-more-react";
 
 const GamePageView = (props) => {
-  console.log("this is gamepageview");
+  console.log("view Props", props);
   return (
-    <div className="game-info">
+    <div>
       {props.game.name ? (
         <div>
-          <div className="container">
-            <div className="row mt-5">
-              <div className="col-12">
-                <img
-                  src={props.game.background_image}
-                  className="d-block w-100 set-image-height"
-                  alt="Game Image"
-                />
+          <div className="container-fluid bgContainer p-0">
+            {props.game.clip ? (
+              <video
+                className="bg"
+                playsInline="playsinline"
+                autoPlay="autoplay"
+                muted
+                loop="loop"
+              >
+                <source src={props.game.clip.clips.full} />
+              </video>
+            ) : (
+              <img
+                className="bg"
+                src={props.game.background_image_additional}
+                alt={props.game.name}
+              ></img>
+            )}
+            <div className="overlayBG p-5">
+              <h1>{props.game.name}</h1>
+              <div className="pt-2">
+                <a
+                  className="btn btn-outline-danger pb-2 ml-2"
+                  href={props.game.website}
+                >
+                  Official Website
+                </a>
               </div>
             </div>
-            <div className="row mt-5">
-              <div className="col-4">
-                <div>
-                  <h3 className="text-danger">{props.game.name}</h3>
-                  <h5>Released: {props.game.released}</h5>
-                  <h5>
-                    <a href={props.game.website}>{props.game.website}</a>
+          </div>
+          <div className="container-fluid">
+            <div className="row pt-4">
+              <div className="col">
+                <div className="d-flex">
+                  <h5 className="border border-danger rounded  text-danger p-2 mr-3">
+                    {props.game.released}
                   </h5>
-                  <h6 className="mt-4">
-                    Rating: {props.game.rating} / {props.game.rating_top}
-                  </h6>
-                  <h6 className="mt-2 mb-4">
-                    Metacritic: {props.game.metacritic} / 100
-                  </h6>
+                  {props.game.parent_platforms.map((platform) => {
+                    return (
+                      <div className="ml-2" key={platform.platform.id}>
+                        {platform.platform.name === "PlayStation" ? (
+                          <i className="fab fa-playstation fa-2x"></i>
+                        ) : platform.platform.name === "Xbox" ? (
+                          <i className="fab fa-xbox fa-2x"></i>
+                        ) : platform.platform.name === "PC" ? (
+                          <i className="fas fa-desktop fa-2x"></i>
+                        ) : platform.platform.name === "iOS" ? (
+                          <i className="fab fa-apple fa-2x"></i>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    );
+                  })}
+                  <button className="btn  btn-outline-danger ml-auto">
+                    <i class="far fa-thumbs-up fa-2x"></i>
+                  </button>
                 </div>
+                <h4 className="text-danger mt-3">About</h4>
                 <div>
-                  {props.isLoggedIn ? (
-                    <div>
-                      {props.comments.map((comment) => (
-                        <div className="comment" key={comment.id}>
-                          {console.log("keyid", comment.id)}
-                          <p>Content: {comment.commentContent}</p>{" "}
-                          <h5>Username: {comment.user.username}</h5>
-                          {comment.createdAt ? (
-                            <h5>Date: {comment.createdAt}</h5>
-                          ) : null}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
+                  <div className="border border-danger rounded">
+                    <ReadMoreReact
+                      text={props.game.description_raw}
+                      min={80}
+                      ideal={100}
+                      max={200}
+                      readMoreText="Read More"
+                    />
+                  </div>
                 </div>
-                <AddCommentFormContainer gameId={props.game.id} />
+                <div className=" d-flex justify-content-between text-danger pt-5">
+                  <div></div>
+                  <div>
+                    <h4>{props.game.developers[0].name}</h4>
+                    <h6 className="text-center">
+                      <u>Developer</u>
+                    </h6>
+                  </div>
+                  <div>
+                    <div className="d-flex">
+                      {props.game.genres.map((genre) => {
+                        return (
+                          <div className="d-flex" key={genre.id}>
+                            <h4 className="ml-2" key={genre.id}>
+                              {genre.name},
+                            </h4>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div>
+                      {" "}
+                      <h6 className="text-center">
+                        <u>Genres</u>
+                      </h6>{" "}
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+
+                <form className="pt-5">
+                  <div className="form-group">
+                    <h2 className="text-danger">Comment</h2>
+                    <textarea className="form-control" rows="3"></textarea>
+                  </div>
+                  <input
+                    className="btn btn-outline-danger"
+                    type="submit"
+                    value="Submit"
+                  />
+                </form>
+
+                <div className="pt-5">
+                  <div className="d-flex pt-1">
+                    <div className="border border-danger rounded">
+                      <div>
+                        <h6>Adam Smith</h6>
+                      </div>
+                      <div className="pl-5">
+                        <h6 className="bg-danger text-white p-2 text-break">
+                          This game has awesome graphics and the sound is good
+                          and I love the characters jdsiinfeuandsadacz
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="d-flex pt-1">
+                    <div className="border border-danger rounded">
+                      <div>
+                        <h6>Alan Eappen</h6>
+                      </div>
+                      <div className="pl-5">
+                        <h6 className="bg-danger text-white p-2 text-break">
+                          This game has awesome graphics and the sound is good
+                          and I love the characters jdsiinfeuandsadacz
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div></div>
+                </div>
               </div>
-              <div className="col-8">
-                <p>{props.game.description_raw}</p>
+              <div className="col">
+                {props.screenshot ? (
+                  <div className="row row-cols-1 row-cols-md-2 pt-4">
+                    {props.screenshot.results.map((result) => {
+                      return (
+                        <div className="col mb-4" key={result.id}>
+                          <div className="card">
+                            <img
+                              className="card-img-top"
+                              alt="ss"
+                              src={result.image}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
@@ -63,6 +181,7 @@ const GamePageView = (props) => {
       ) : (
         <div className="loader"></div>
       )}
+      <div></div>
     </div>
   );
 };
