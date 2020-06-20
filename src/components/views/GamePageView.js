@@ -49,7 +49,7 @@ const GamePageView = (props) => {
                   </h5>
                   {props.game.parent_platforms.map((platform) => {
                     return (
-                      <div className="ml-2" key={platform.platform.id}>
+                      <div className="ml-3 mt-1" key={platform.platform.id}>
                         {platform.platform.name === "PlayStation" ? (
                           <i className="fab fa-playstation fa-2x"></i>
                         ) : platform.platform.name === "Xbox" ? (
@@ -80,8 +80,7 @@ const GamePageView = (props) => {
                     />
                   </div>
                 </div>
-                <div className=" d-flex justify-content-between text-danger pt-5">
-                  <div></div>
+                <div className="d-flex justify-content-between text-danger pt-5">
                   <div>
                     <h4>{props.game.developers[0].name}</h4>
                     <h6 className="text-center">
@@ -107,12 +106,11 @@ const GamePageView = (props) => {
                       </h6>{" "}
                     </div>
                   </div>
-                  <div></div>
                 </div>
 
                 <form className="pt-5">
                   <div className="form-group">
-                    <h2 className="text-danger">Comment</h2>
+                    <h2 className="text-danger">Add Comment</h2>
                     <textarea className="form-control" rows="3"></textarea>
                   </div>
                   <input
@@ -121,38 +119,6 @@ const GamePageView = (props) => {
                     value="Submit"
                   />
                 </form>
-
-                <div className="pt-5">
-                  <div className="d-flex pt-1">
-                    <div className="border border-danger rounded">
-                      <div>
-                        <h6>Adam Smith</h6>
-                      </div>
-                      <div className="pl-5">
-                        <h6 className="bg-danger text-white p-2 text-break">
-                          This game has awesome graphics and the sound is good
-                          and I love the characters jdsiinfeuandsadacz
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="d-flex pt-1">
-                    <div className="border border-danger rounded">
-                      <div>
-                        <h6>Alan Eappen</h6>
-                      </div>
-                      <div className="pl-5">
-                        <h6 className="bg-danger text-white p-2 text-break">
-                          This game has awesome graphics and the sound is good
-                          and I love the characters jdsiinfeuandsadacz
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div></div>
-                </div>
               </div>
               <div className="col">
                 {props.screenshot ? (
@@ -174,6 +140,43 @@ const GamePageView = (props) => {
                 ) : (
                   <></>
                 )}
+              </div>
+            </div>
+          </div>
+          <div className="container px-5">
+            <div className="row mt-5 d-flex justify-content-center">
+              <div className="pt-5">
+                <h2 className="text-danger text-center border border-danger rounded py-2">
+                  Comments About The Game
+                </h2>
+                <div className="d-flex pt-1">
+                  <div className="">
+                    <div>
+                      <h6>Adam Smith</h6>
+                    </div>
+                    <div className="pl-5">
+                      <h6 className="bg-danger text-white p-2 text-break">
+                        This game has awesome graphics and the sound is good and
+                        I love the characters!
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="d-flex pt-3">
+                  <div className="">
+                    <div>
+                      <h6>Alan Eappen</h6>
+                    </div>
+                    <div className="pl-5">
+                      <h6 className="bg-danger text-white p-2 text-break">
+                        This game has awesome graphics and the sound is good and
+                        I love the characters! I could play this forever! Save
+                        me please!
+                      </h6>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
