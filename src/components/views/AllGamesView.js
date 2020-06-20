@@ -1,10 +1,22 @@
 import React from "react";
 
+const date = new Date();
+let year = date.getFullYear();
+let month = ("0" + (date.getMonth() + 1)).slice(-2);
+let day = ("0" + date.getDate()).slice(-2);
+let today = `${year}-${month}-${day}`;
+
+console.log(today);
 function AllGamesView(props) {
   return (
     <div>
       <button onClick={props.handleFilter({ page: -2 })}>Previous Page</button>
       <button onClick={props.handleFilter({ page: -1 })}>Next Page</button>
+      <button
+        onClick={props.handleFilter({ page: 1, ordering: "", dates: "" })}
+      >
+        Trending
+      </button>
       <button onClick={props.handleGenre} value="action">
         Action
       </button>
@@ -23,8 +35,28 @@ function AllGamesView(props) {
       <button onClick={props.handleGenre} value="adventure">
         Adventure
       </button>
+      <button onClick={props.handleGenre} value="puzzle">
+        Puzzle
+      </button>
+      <button
+        onClick={props.handleFilter({
+          ordering: "-added",
+          dates: `${year}-01-01,${today}`,
+        })}
+        value="Best of Year"
+      >
+        Best of {year}
+      </button>
+      <button
+        onClick={props.handleFilter({
+          ordering: "-rating",
+        })}
+        value="Top Rated"
+      >
+        Top Rated
+      </button>
 
-      {props.games.length > 0 ? (
+      {props.games.length > 0 && !props.isLoading ? (
         props.games.map((game) => {
           return (
             <div key={game.id}>
