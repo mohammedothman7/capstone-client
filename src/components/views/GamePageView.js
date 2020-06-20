@@ -35,16 +35,22 @@ const GamePageView = (props) => {
                   </h6>
                 </div>
                 <div>
-                  {props.comments.map((comment) => (
-                    <div className="comment" key={comment.id}>
-                      {console.log("keyid", comment.id)}
-                      <p>Content: {comment.commentContent}</p>{" "}
-                      <h5>Username: {comment.user.username}</h5>
-                      {comment.createdAt ? (
-                        <h5>Date: {comment.createdAt}</h5>
-                      ) : null}
+                  {props.isLoggedIn ? (
+                    <div>
+                      {props.comments.map((comment) => (
+                        <div className="comment" key={comment.id}>
+                          {console.log("keyid", comment.id)}
+                          <p>Content: {comment.commentContent}</p>{" "}
+                          <h5>Username: {comment.user.username}</h5>
+                          {comment.createdAt ? (
+                            <h5>Date: {comment.createdAt}</h5>
+                          ) : null}
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
                 <AddCommentFormContainer gameId={props.game.id} />
               </div>
