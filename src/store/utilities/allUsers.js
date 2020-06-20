@@ -42,8 +42,8 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
         console.log("FAIL");
       } else {
         console.log(loggedUser);
-        dispatch(login(loggedUser.firstName));
-        ownProps.history.push(`/loginNav`);
+        dispatch(login(loggedUser));
+        ownProps.history.push(`/`);
       }
     });
 };
@@ -54,6 +54,7 @@ const reducer = (state = [], action) => {
     case REGISTER_USER:
       return [...state, action.payload];
     case LOGIN:
+      console.log("login payload", action.payload);
       return action.payload;
     default:
       return state;
