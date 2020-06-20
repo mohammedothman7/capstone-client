@@ -20,10 +20,13 @@ class LoggedInNavBarContainer extends Component {
   }
 
   handleOnClick = () => {
+    window.location.reload();
+    /*
     this.setState({
       userId: null,
     });
     console.log(this.state.userId);
+    */
   };
 
   render() {
