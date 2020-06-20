@@ -4,20 +4,14 @@ import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
+
 const GamePageView = (props) => {
   console.log("view Props", props);
   return (
     <div>
-
-      {/* {redirect to home page} */}
-      <Link to="/">
-        <button>Home page</button>
-      </Link>
-
       {props.game.name ? (
         <div>
-
-        {/* {this div block is the clip section} */}
+          {/* {this div block is the clip section} */}
           <div className="container-fluid bgContainer p-0">
             {props.game.clip ? (
               <video
@@ -50,19 +44,17 @@ const GamePageView = (props) => {
             </div>
           </div>
 
-
           <div className="container-fluid">
             <div className="row pt-4">
               <div className="col">
-
-              {/* {this div block is the date and platform section} */}
+                {/* {this div block is the date and platform section} */}
                 <div className="d-flex">
-                  <h5 className="border border-danger rounded  text-danger p-2 mr-3">
+                  <h5 className="border border-danger rounded text-danger p-2 mr-3">
                     {props.game.released}
                   </h5>
                   {props.game.parent_platforms.map((platform) => {
                     return (
-                      <div className="ml-2" key={platform.platform.id}>
+                      <div className="ml-3 mt-1" key={platform.platform.id}>
                         {platform.platform.name === "PlayStation" ? (
                           <i className="fab fa-playstation fa-2x"></i>
                         ) : platform.platform.name === "Xbox" ? (
@@ -84,11 +76,10 @@ const GamePageView = (props) => {
                   </button> */}
                 </div>
 
-
-            {/* {this div block is the About section} */}
+                {/* {this div block is the About section} */}
                 <h4 className="text-danger mt-3">About</h4>
                 <div>
-                  <div className="border border-danger rounded">
+                  <div className="border border-danger rounded px-2 py-1">
                     <ReadMoreReact
                       text={props.game.description_raw}
                       min={80}
@@ -99,10 +90,8 @@ const GamePageView = (props) => {
                   </div>
                 </div>
 
-
-          {/* {this div block is the developer and genres display section} */}
-                <div className=" d-flex justify-content-between text-danger pt-5">
-                  <div></div>
+                {/* {this div block is the developer and genres display section} */}
+                <div className="d-flex justify-content-between text-danger pt-4 mt-3">
                   <div>
                     <h4>{props.game.developers[0].name}</h4>
                     <h6 className="text-center">
@@ -122,45 +111,17 @@ const GamePageView = (props) => {
                       })}
                     </div>
                     <div>
-                      {" "}
-                      <h6 className="text-center">
+                      <h6 className="text-center mb-4">
                         <u>Genres</u>
-                      </h6>{" "}
+                      </h6>
                     </div>
                   </div>
-                  <div></div>
-                </div>
-
-
-                {/* {this div block is the comment section} */}
-                <div className="pt-5">
-                  {props.comments.map((comment) => (
-                    <div className="d-flex pt-1">
-                      <div
-                        className="border border-danger rounded"
-                        key={comment.id}
-                      >
-                        {console.log("keyid", comment.id)}
-
-                        <div className="pl-5">
-                          <h6 className="bg-danger text-white p-2 text-break">
-                            {comment.commentContent}
-                          </h6>
-                        </div>
-
-                        <div>
-                          <h5>Username: {comment.user.username}</h5>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  <div></div>
                 </div>
 
                 <AddCommentFormContainer gameId={props.game.id} />
               </div>
 
-            {/* {this div block is the screenshot section} */}
+              {/* {this div block is the screenshot section} */}
               <div className="col">
                 {props.screenshot ? (
                   <div className="row row-cols-1 row-cols-md-2 pt-4">
@@ -169,7 +130,7 @@ const GamePageView = (props) => {
                         <div className="col mb-4" key={result.id}>
                           <div className="card">
                             <img
-                              className="card-img-top"
+                              className="card-img-top set-ss-height"
                               alt="ss"
                               src={result.image}
                             />
@@ -182,17 +143,39 @@ const GamePageView = (props) => {
                   <></>
                 )}
               </div>
-
             </div>
           </div>
 
+          {/* {this container block is the comment section} */}
+          <div className="container px-5">
+            <div className="row mt-5 d-flex justify-content-center">
+              <div className="pt-5">
+                <h2 className="text-danger text-center border border-danger rounded py-2 px-5">
+                  Comments About The Game
+                </h2>
+                {props.comments.map((comment) => (
+                  <div className="d-flex pt-1">
+                    <div key={comment.id}>
+                      {console.log("keyid", comment.id)}
+                      <div>
+                        <h5>{comment.user.username}</h5>
+                      </div>
+
+                      <div className="pl-5">
+                        <h6 className="bg-danger text-white p-2 text-break">
+                          {comment.commentContent}
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="loader"></div>
       )}
-
-      <div></div>
-
     </div>
   );
 };
