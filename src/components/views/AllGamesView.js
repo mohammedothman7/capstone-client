@@ -1,41 +1,71 @@
 import React from "react";
 
+// Get the date and format it correctly for best of year button
 const date = new Date();
 let year = date.getFullYear();
 let month = ("0" + (date.getMonth() + 1)).slice(-2);
 let day = ("0" + date.getDate()).slice(-2);
 let today = `${year}-${month}-${day}`;
 
-console.log(today);
 function AllGamesView(props) {
   return (
     <div>
-      <button onClick={props.handleFilter({ page: -2 })}>Previous Page</button>
-      <button onClick={props.handleFilter({ page: -1 })}>Next Page</button>
+      <button onClick={props.navigatePages(-2)}>Previous Page</button>
+      <button onClick={props.navigatePages(-1)}>Next Page</button>
+
       <button
-        onClick={props.handleFilter({ page: 1, ordering: "", dates: "" })}
+        onClick={props.handleFilter({
+          page: 1,
+          ordering: "",
+          dates: "",
+        })}
+        value="trending"
       >
         Trending
       </button>
-      <button onClick={props.handleGenre} value="action">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "action" })}
+        value="action"
+      >
         Action
       </button>
-      <button onClick={props.handleGenre} value="role-playing-games-rpg">
+      <button
+        onClick={props.handleFilter({
+          page: 1,
+          genres: "role-playing-games-rpg",
+        })}
+        value="role-playing-games-rpg"
+      >
         RPG
       </button>
-      <button onClick={props.handleGenre} value="strategy">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "strategy" })}
+        value="strategy"
+      >
         Strategy
       </button>
-      <button onClick={props.handleGenre} value="shooter">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "shooter" })}
+        value="shooter"
+      >
         Shooter
       </button>
-      <button onClick={props.handleGenre} value="racing">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "racing" })}
+        value="racing"
+      >
         Racing
       </button>
-      <button onClick={props.handleGenre} value="adventure">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "adventure" })}
+        value="adventure"
+      >
         Adventure
       </button>
-      <button onClick={props.handleGenre} value="puzzle">
+      <button
+        onClick={props.handleFilter({ page: 1, genres: "puzzle" })}
+        value="puzzle"
+      >
         Puzzle
       </button>
       <button
