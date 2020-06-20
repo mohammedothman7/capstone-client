@@ -41,11 +41,11 @@ class AddCommentFormContainer extends Component {
 
     if (!this.state.userId)
       return (
-        <div>
-          <Link to="/login">
-            <button className="btn btn-outline-danger text-center">
+        <div className="d-flex justify-content-center">
+          <Link to="/login" className="nounderline">
+            <button className="btn btn-outline-danger mt-5">
               Login to add a comment
-            </button>{" "}
+            </button>
           </Link>
         </div>
       );

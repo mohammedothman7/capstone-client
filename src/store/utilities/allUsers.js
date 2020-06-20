@@ -43,7 +43,7 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
       } else {
         console.log(loggedUser);
         dispatch(login(loggedUser));
-        ownProps.history.push(`/`);
+        ownProps.history.goBack();
       }
     });
 };
