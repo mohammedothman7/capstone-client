@@ -3,10 +3,10 @@ import "./styles/AllGamesView.css"
 import {withRouter} from "react-router-dom";
 
 function AllGamesView(props) {
-  console.log(props.games.data);
+  console.log(props.games);
   return (
     <div>
-    {props.games.data? (
+    {props.games.length > 0 ? (
     <div>
     <div className="container-fluid">
     <div className="row">
@@ -48,7 +48,7 @@ function AllGamesView(props) {
      </select>
       <div className = "text-center">
       <div className = "row row-cols-1 row-cols-md-3 pt-4">
-        {props.games.data.map((game) => {
+        {props.games.map((game) => {
           return (
             <div className = "col mb-4 parentContainer" key={game.id} onClick={() => props.history.push(`/gamePage/${game.id}`) }>
               <div className ="card">

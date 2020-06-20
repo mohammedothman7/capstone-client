@@ -48,6 +48,7 @@ export class AllGamesContainer extends Component {
       // Modify page in the copy of the state
       param["page"] = param.page + 1;
     } else if (filter.page === -2) {
+      if (param.page <= 1) return;
       // Decrement page if equal to -2
       param["page"] = param.page - 1;
     }
@@ -56,13 +57,17 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
-//  navigateTo(e){
-//    let id =e.target.key; 
-//   window.location.href=`/gamePage/${id}`;
-//  }
+  navigateTo() {
+    window.location.href = "/gamePage/2";
+  }
+
+  //  navigateTo(e){
+  //    let id =e.target.key;
+  //   window.location.href=`/gamePage/${id}`;
+  //  }
 
   render() {
-    console.log("user information here*****", this.props.user)
+    console.log("user information here*****", this.props.user);
     return (
       <div>
         <AllGamesView
@@ -82,7 +87,7 @@ const mapState = (state) => {
   //console.log('In mapState');
   return {
     allGames: state.allGames,
-    user: state.allUsers
+    user: state.allUsers,
   };
 };
 

@@ -77,9 +77,11 @@ const GamePageView = (props) => {
                       </div>
                     );
                   })}
-                  <button className="btn  btn-outline-danger ml-auto">
+
+                  {/* {Like button work on later} */}
+                  {/* <button className="btn  btn-outline-danger ml-auto">
                     <i class="far fa-thumbs-up fa-2x"></i>
-                  </button>
+                  </button> */}
                 </div>
 
 

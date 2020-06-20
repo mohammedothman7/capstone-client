@@ -2,8 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchGameThunk, fetchCommentsThunk,fetchSSThunk } from "../../thunks";
 import { GamePageView } from "../views";
+import { NavBarView } from "../views";
+import { LoggedInNavBarContainer } from ".";
 
 class GamePageContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      userId: null,
+    };
+  }
+
   componentDidMount = () => {
     console.log("this is gamepagecontainer didmount");
     this.props.fetchGame(this.props.match.params.id);
@@ -26,8 +36,8 @@ class GamePageContainer extends Component {
 
 //map state to props
 const mapState = (state) => {
-  console.log("state ss ",state.screenshot)
-  console.log("state games", state.game)
+  console.log("state ss", state.screenshot);
+  console.log("state games", state.game);
   return {
     game: state.game,
     comments: state.comments,

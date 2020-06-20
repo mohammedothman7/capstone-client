@@ -28,14 +28,14 @@ const NavBarView = (props) => {
           </button>
         </form>
         <div className="ml-auto p-1">
-          <Link to="/login" className="btn btn-outline-danger ">
+          <Link to="/about" className="btn btn-outline-danger mr-4">
+            About
+          </Link>
+          <Link to="/login" className="btn btn-outline-danger ml-2">
             Login
           </Link>
           <Link to="/register" className="btn btn-outline-danger ml-2">
             Register
-          </Link>
-          <Link to="/about" className="btn btn-outline-danger ml-2">
-            About
           </Link>
         </div>
       </nav>

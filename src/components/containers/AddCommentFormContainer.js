@@ -38,11 +38,14 @@ class AddCommentFormContainer extends Component {
 
   render() {
     console.log("this addcommentformcontainer");
+
     if (!this.state.userId)
       return (
         <div>
           <Link to="/login">
-            <button>please log in to add comment</button>{" "}
+            <button className="btn btn-outline-danger text-center">
+              Login to add a comment
+            </button>{" "}
           </Link>
         </div>
       );

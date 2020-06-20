@@ -31,9 +31,12 @@ const LoggedInNavBarView = (props) => {
           <Link to="/about" className="btn btn-outline-danger mr-4">
             About
           </Link>
-          <Link to="$" className="btn btn-outline-danger ml-2">
+          <button
+            className="btn btn-outline-danger ml-2"
+            onClick={props.onClick}
+          >
             Logout
-          </Link>
+          </button>
         </div>
       </nav>
     </div>
