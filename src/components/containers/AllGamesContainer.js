@@ -43,42 +43,77 @@ export class AllGamesContainer extends Component {
     so we can use in API call */
     let param = this.state.filter;
 
+    // If a genre is passed as an argument then add to params to be passed to API
+    if (filter.genres) {
+      param.genres = filter.genres;
+      param.page = 1;
+    } else {
+      delete param.genres;
+    }
+
+    // If a ordering is passed as an argument then add to params to be passed to API
     if (filter.ordering) {
       param.ordering = filter.ordering;
+      param.page = 1;
     } else {
-      param.ordering = "";
+      delete param.ordering;
     }
+
+    // If a dates is passed as an argument then add to params to be passed to API
     if (filter.dates) {
       param.dates = filter.dates;
+      param.page = 1;
     } else {
-      param.dates = "";
+      delete param.dates;
     }
 
-    /* If next button is clicked then filter.page is set to -1, 
-    so we know to increment the page counter by 1 */
-    if (filter.page === -1) {
-      // Modify page in the copy of the state
-
-      param.page = param.page + 1;
-    } else if (filter.page === -2) {
-      if (param.page <= 1) return;
-      // Decrement page if equal to -2
-      param.page = param.page - 1;
+    if (event.target.value === "trending") {
+      param.page = 1;
     }
+    // Set filter in state to params and isLoading to true
+    this.setState({ filter: param, isLoading: true });
 
-    this.setState({ isLoading: true });
-    // Call Thunk to fetch games from API
+    // Call API and wait for response to
     await this.props.fetchAllGames(param);
-    // Set the games array to allGames from redux store
+
+    // Set the games array to API response, set isLoading to false since API has responded
     this.setState({
       games: this.props.allGames,
       isLoading: false,
-      filter: param,
     });
   };
 
-  handleGenre = (event) => {
-    this.props.fetchGenreGames(event.target.value);
+  navigatePages = (page) => async (event) => {
+    event.preventDefault();
+
+    // Make a copy of filter in state
+    let params = this.state.filter;
+
+    // If page is -1 then navigate to next page
+    if (page === -1) {
+      // Modify page in the copy of the state
+      page = params.page + 1;
+    } else if (page === -2) {
+      if (params.page <= 1) return;
+      // Decrement page if equal to -2
+      page = params.page - 1;
+    }
+
+    // Set the local copy page to the page we just changed in if else condition
+    params.page = page;
+
+    // Set isLoading to true while we wait for API response
+    this.setState({ isLoading: true });
+
+    // Call Thunk to fetch games from API
+    await this.props.fetchAllGames(params);
+
+    // Set the games array to allGames from redux store, isLoading to false since API responded, filter to the modified copy
+    this.setState({
+      games: this.props.allGames,
+      isLoading: false,
+      filter: params,
+    });
   };
 
   render() {
@@ -89,8 +124,8 @@ export class AllGamesContainer extends Component {
           filter={this.state.filter}
           fetchAllGames={this.props.fetchAllGames}
           handleFilter={this.handleFilter}
-          handleGenre={this.handleGenre}
           isLoading={this.state.isLoading}
+          navigatePages={this.navigatePages}
         ></AllGamesView>
       </div>
     );
