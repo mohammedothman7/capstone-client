@@ -70,7 +70,7 @@ const GamePageView = (props) => {
                 </div>
                 <h4 className="text-danger mt-3">About</h4>
                 <div>
-                  <div className="border border-danger rounded">
+                  <div className="border border-danger rounded px-2 py-1">
                     <ReadMoreReact
                       text={props.game.description_raw}
                       min={80}
@@ -80,7 +80,7 @@ const GamePageView = (props) => {
                     />
                   </div>
                 </div>
-                <div className="d-flex justify-content-between text-danger pt-5">
+                <div className="d-flex justify-content-between text-danger pt-4 mt-1">
                   <div>
                     <h4>{props.game.developers[0].name}</h4>
                     <h6 className="text-center">
@@ -108,7 +108,7 @@ const GamePageView = (props) => {
                   </div>
                 </div>
 
-                <form className="pt-5">
+                <form className="pt-4">
                   <div className="form-group">
                     <h2 className="text-danger">Add Comment</h2>
                     <textarea className="form-control" rows="3"></textarea>
