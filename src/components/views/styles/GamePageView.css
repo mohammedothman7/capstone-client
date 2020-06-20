@@ -1,7 +1,4 @@
-.bar-75 {
-  width: 75%;
-}
-
-.bar-93 {
-  width: 93%;
+.set-image-height {
+  min-height: 514px;
+  max-height: 514px;
 }

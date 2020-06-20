@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/GamePageView.css";
+import { AddCommentFormContainer } from "../containers";
 
 const GamePageView = (props) => {
+  console.log("this is gamepageview");
   return (
     <div className="game-info">
       {props.game.name ? (
@@ -12,7 +14,7 @@ const GamePageView = (props) => {
               <div className="col-12">
                 <img
                   src={props.game.background_image}
-                  className="d-block w-100"
+                  className="d-block w-100 set-image-height"
                   alt="Game Image"
                 />
               </div>
@@ -25,33 +27,26 @@ const GamePageView = (props) => {
                   <h5>
                     <a href={props.game.website}>{props.game.website}</a>
                   </h5>
-                  <h6 className="mt-5">Rating: {props.game.rating} / 3</h6>
-                  <div className="progress">
-                    <div
-                      className="progress-bar bg-danger bar-93"
-                      role="progressbar"
-                      aria-valuenow="75"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    >
-                      93 / 100
-                    </div>
-                  </div>
-                  <h6 className="mt-2">
+                  <h6 className="mt-4">
+                    Rating: {props.game.rating} / {props.game.rating_top}
+                  </h6>
+                  <h6 className="mt-2 mb-4">
                     Metacritic: {props.game.metacritic} / 100
                   </h6>
-                  <div className="progress">
-                    <div
-                      className="progress-bar bg-danger bar-75"
-                      role="progressbar"
-                      aria-valuenow="100"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    >
-                      75 / 100
-                    </div>
-                  </div>
                 </div>
+                <div>
+                  {props.comments.map((comment) => (
+                    <div className="comment" key={comment.id}>
+                      {console.log("keyid", comment.id)}
+                      <p>Content: {comment.commentContent}</p>{" "}
+                      <h5>Username: {comment.user.username}</h5>
+                      {comment.createdAt ? (
+                        <h5>Date: {comment.createdAt}</h5>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+                <AddCommentFormContainer gameId={props.game.id} />
               </div>
               <div className="col-8">
                 <p>{props.game.description_raw}</p>

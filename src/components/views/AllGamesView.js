@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/AllGamesView.css";
+import { withRouter } from "react-router-dom";
 
 function AllGamesView(props) {
   console.log(props.games);
@@ -110,7 +111,10 @@ function AllGamesView(props) {
                         <div
                           className="col mb-4 parentContainer"
                           key={game.id}
-                          onClick={props.onClickDiv}
+                          // onClick={() => window.location.href=`/gamePage/${game.id}`}
+                          onClick={() =>
+                            props.history.push(`/gamePage/${game.id}`)
+                          }
                         >
                           <div className="card">
                             <img
@@ -152,4 +156,5 @@ function AllGamesView(props) {
     </div>
   );
 }
-export default AllGamesView;
+
+export default withRouter(AllGamesView);
