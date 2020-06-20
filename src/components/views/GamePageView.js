@@ -110,7 +110,7 @@ const GamePageView = (props) => {
 
                 <form className="pt-4">
                   <div className="form-group">
-                    <h2 className="text-danger">Add Comment</h2>
+                    <h4 className="text-danger">Add Comment</h4>
                     <textarea className="form-control" rows="3"></textarea>
                   </div>
                   <input
@@ -128,7 +128,7 @@ const GamePageView = (props) => {
                         <div className="col mb-4" key={result.id}>
                           <div className="card">
                             <img
-                              className="card-img-top"
+                              className="card-img-top set-ss-height"
                               alt="ss"
                               src={result.image}
                             />

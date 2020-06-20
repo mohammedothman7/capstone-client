@@ -3,6 +3,11 @@
   max-height: 514px;
 }
 
+.set-ss-height {
+  min-height: 140px;
+  max-height: 140px;
+}
+
 .bg {
   width: 100%;
   height: 75vh;
