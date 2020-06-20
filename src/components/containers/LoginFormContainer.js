@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { LoginFormView } from "../views";
 import { loginThunk } from "../../thunks";
+import NavBarContainer from "./NavBarContainer";
 
 class LoginFormContainer extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class LoginFormContainer extends Component {
       username: "",
       password: "",
       user: "",
+      isLoggedIn: false,
     };
   }
 
@@ -26,7 +28,11 @@ class LoginFormContainer extends Component {
     const user = this.props.user;
     this.setState({
       user,
+      isLoggedIn: true,
     });
+    console.log(this.state.isLoggedIn);
+    if (this.state.isLoggedIn === true) {
+    }
   };
 
   render() {
