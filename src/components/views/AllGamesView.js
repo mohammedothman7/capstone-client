@@ -27,7 +27,7 @@ function AllGamesView(props) {
                   </button>
                 </div>
 
-                <div className="ml-4 pt-4">
+                <div className="ml-4 pt-4 mt-5">
                   <h3 className="text-danger text-center">New Releases</h3>
                   <button className="btn btn-outline-danger btn-block">
                     This week
