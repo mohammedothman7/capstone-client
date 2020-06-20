@@ -27,7 +27,8 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
       const tweakedUser = { ...newUser };
       console.log(tweakedUser);
       dispatch(registerUser(tweakedUser));
-      ownProps.history.push(`/login`);
+      //ownProps.history.push(`/`);
+      ownProps.history.goBack();
     })
     .catch((err) => console.log(err));
 };
