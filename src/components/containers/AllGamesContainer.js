@@ -106,19 +106,13 @@ export class AllGamesContainer extends Component {
 
     // Make a copy of filter in state
     let params = this.state.filter;
-
-    // If page is -1 then navigate to next page
-    if (page === -1) {
+    if (page === "next") {
       // Modify page in the copy of the state
-      page = params.page + 1;
-    } else if (page === -2) {
-      if (params.page <= 1) return;
-      // Decrement page if equal to -2
-      page = params.page - 1;
+      params.page = params.page + 1;
+    } else if (page === "previous") {
+      if (params.page <= 1) return; // Check to see if page is at 1, if so then return and dont decrement page
+      params.page = params.page - 1;
     }
-
-    // Set the local copy page to the page we just changed in if else condition
-    params.page = page;
 
     // Set isLoading to true while we wait for API response
     this.setState({ isLoading: true });
