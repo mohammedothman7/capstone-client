@@ -9,8 +9,14 @@ let today = moment().format("YYYY-MM-DD");
 let startOfWeek = moment().startOf("week").format("YYYY-MM-DD");
 let endOfWeek = moment().endOf("week").format("YYYY-MM-DD");
 let lastThirtyDays = moment().subtract(30, "days").format("YYYY-MM-DD");
-let endOfNextWeek = moment().add({ week: 1 }).format("YYYY-MM-DD");
-let startOfNextWeek = moment().add({ week: 1, day: -6 }).format("YYYY-MM-DD");
+let endOfNextWeek = moment()
+  .add({ week: 1 })
+  .endOf("week")
+  .format("YYYY-MM-DD");
+let startOfNextWeek = moment()
+  .add({ week: 1 })
+  .startOf("week")
+  .format("YYYY-MM-DD");
 
 function AllGamesView(props) {
   return (
@@ -74,6 +80,7 @@ function AllGamesView(props) {
                       dates: `${startOfNextWeek},${endOfNextWeek}`,
                     })}
                   >
+                    {" "}
                     Next week
                   </button>
                   <button
