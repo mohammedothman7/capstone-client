@@ -5,6 +5,7 @@ import {
   fetchCommentsThunk,
   fetchSSThunk,
   fetchLikesThunk,
+  addLikeThunk,
 } from "../../thunks";
 import { GamePageView } from "../views";
 import { NavBarView } from "../views";
@@ -60,7 +61,7 @@ class GamePageContainer extends Component {
 //map state to props
 const mapState = (state) => {
   // console.log("state ss", state.screenshot);
-  console.log("This is mapState ---  games", state.game);
+  console.log("This is mapState ---  games");
   // console.log("state likes", state.likes);
   return {
     game: state.game,
@@ -78,6 +79,7 @@ const mapDispatch = (dispatch) => {
     fetchComment: (id) => dispatch(fetchCommentsThunk(id)),
     fetchSS: (id) => dispatch(fetchSSThunk(id)),
     fetchLikes: (id) => dispatch(fetchLikesThunk(id)),
+    addLike: (newLike) => dispatch(addLikeThunk(newLike)),
   };
 };
 
