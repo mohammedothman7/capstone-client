@@ -173,12 +173,26 @@ function AllGamesView(props) {
                 </div>
               </div>
               <div className="col-10">
-                <select className="btn btn-outline-danger mt-4">
-                  <option value="trending">Trending</option>
-                  <option value="Most Liked">Most Liked</option>
-                  <option value="Best Rating">Release Date</option>
-                  <option value="Best on PS4">Name</option>
-                </select>
+                <div className="mt-4 mb-1">
+                  <select className="btn btn-outline-danger">
+                    <option value="trending">Trending</option>
+                    <option value="Most Liked">Most Liked</option>
+                    <option value="Best Rating">Release Date</option>
+                    <option value="Best on PS4">Name</option>
+                  </select>
+                  <button
+                    className="btn btn-outline-danger ml-2 float-right"
+                    onClick={props.navigatePages({ page: -1 })}
+                  >
+                    Next Page
+                  </button>
+                  <button
+                    className="btn btn-outline-danger float-right"
+                    onClick={props.navigatePages({ page: -2 })}
+                  >
+                    Previous Page
+                  </button>
+                </div>
                 <div className="text-center">
                   <div className="row row-cols-1 row-cols-md-3 pt-4">
                     {props.games.map((game) => {
@@ -204,18 +218,6 @@ function AllGamesView(props) {
                       );
                     })}
                   </div>
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={props.navigatePages({ page: -2 })}
-                  >
-                    Previous Page
-                  </button>
-                  <button
-                    className="btn btn-outline-danger ml-2"
-                    onClick={props.navigatePages({ page: -1 })}
-                  >
-                    Next Page
-                  </button>
                 </div>
               </div>
             </div>
