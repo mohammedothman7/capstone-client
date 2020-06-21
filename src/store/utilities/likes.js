@@ -28,27 +28,23 @@ export const fetchLikesThunk = (gameId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const addLikesThunk = (like) => (dispatch) => {
-//   return axios
-//     .post(`/api/likes/${newComment.gameId}`, newComment)
-//     .then((res) => res.data)
-//     .then((newComment) => {
-//       dispatch(addComment(newComment));
-//       console.log("~~~~~~~~~~~~" + newComment);
-//       console.log("this is addcommentthunk" + newComment.user.username);
-      
-//       // ownProps.history.push(`/gamePage/${newComment.gameId}`)
-//     })
-//     .catch((err) => console.log(err));
-// };
+export const addLikeThunk = (like) => (dispatch) => {
+  return axios
+    .post(`/api/likes/${like.gameId}`, like)
+    .then((res) => res.data)
+    .then((newLike) => {
+      dispatch(addLike(newLike));
+    })
+    .catch((err) => console.log(err));
+};
 
 //Reducer
-const reducer = (state = {} , action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_LIKES:
       return action.payload;
-    // case ADD_COMMENT:
-    //   return [...state, action.payload];
+    case ADD_LIKE:
+      return { ...state, count: state.count + 1, rows: action.payload };
     default:
       return state;
   }
