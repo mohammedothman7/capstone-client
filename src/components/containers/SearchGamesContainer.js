@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavBarView, SearchGamesView } from "../views";
 import { LoggedInNavBarContainer } from ".";
+import {
+  clearGameThunk,
+} from "../../thunks";
 
 export class SearchGames extends Component {
   constructor(props) {
@@ -19,6 +22,7 @@ export class SearchGames extends Component {
       username: this.props.user.username,
       userId: this.props.user.id,
     });
+    this.props.clearGame();
     console.log("this is navbarcontainer  didmount", this.state);
   }
 
@@ -40,4 +44,11 @@ const mapState = (state) => {
   return { search: state.searchGames, user: state.allUsers };
 };
 
-export default connect(mapState, null)(SearchGames);
+const mapDispatch = (dispatch) => {
+  //console.log('In mapDispatch');
+  return {
+    clearGame: () => dispatch(clearGameThunk),
+  };
+};
+
+export default connect(mapState, mapDispatch)(SearchGames);

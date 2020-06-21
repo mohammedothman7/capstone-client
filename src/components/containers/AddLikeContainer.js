@@ -33,7 +33,9 @@ class AddLikeContainer extends Component {
     }
     if (!this.alreadyLiked) {
       this.props.addLike(this.state);
-    } else alert("You already liked this game before.");
+      this.alreadyLiked = true;
+    } 
+    else alert("You already liked this game before.");
   };
 
   render() {
@@ -42,7 +44,7 @@ class AddLikeContainer extends Component {
     if (!this.state.userId)
       return (
         <Link to="/login" className="btn btn-outline-danger ml-auto">
-          <i class="far fa-thumbs-up fa-2x"></i>
+          <i className="far fa-thumbs-up fa-2x"></i>
         </Link>
       );
     else return <AddLikeView handleAddLike={this.handleAddLike} />;
