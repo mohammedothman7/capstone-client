@@ -24,7 +24,7 @@ class AddCommentFormContainer extends Component {
       userId: this.props.user.id,
       user: user,
     });
-   // console.log("this is addcommentform  didmount", this.state);
+    // console.log("this is addcommentform  didmount", this.state);
   }
 
   handleChange = (e) => {
@@ -34,10 +34,11 @@ class AddCommentFormContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addComment(this.state);
+    this.setState({ commentContent: "" });
   };
 
   render() {
-   // console.log("this addcommentformcontainer");
+    // console.log("this addcommentformcontainer");
 
     if (!this.state.userId)
       return (
