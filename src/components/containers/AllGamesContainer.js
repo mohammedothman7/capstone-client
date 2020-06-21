@@ -135,8 +135,6 @@ export class AllGamesContainer extends Component {
   };
 
   render() {
-    console.log("user information here*****", this.props.user);
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", this.props.game);
     return (
       <div>
         <AllGamesView
