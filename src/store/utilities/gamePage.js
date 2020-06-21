@@ -25,7 +25,6 @@ export const fetchGameThunk = (id) => (dispatch) => {
     .then((res) => res.data)
     .then((game) => {
       dispatch(fetchGame(game));
-      console.log("this is fetchGameThunk --- game");
     })
     .catch((err) => console.log(err));
 };

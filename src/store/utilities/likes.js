@@ -1,5 +1,4 @@
 import axios from "axios";
-import { act } from "react-dom/test-utils";
 
 //Action Types
 const ADD_LIKE = "ADD_LIKE";
@@ -35,8 +34,6 @@ export const addLikeThunk = (like) => (dispatch) => {
     .then((res) => res.data)
     .then((newLike) => {
       dispatch(addLike(newLike));
-      console.log("~~~~~~~~~~~~" + newLike);
-      console.log("this is addlikethunk" + newLike.gameId);
     })
     .catch((err) => console.log(err));
 };
