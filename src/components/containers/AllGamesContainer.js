@@ -139,9 +139,7 @@ export class AllGamesContainer extends Component {
       <div>
         <AllGamesView
           games={this.state.games}
-          filter={this.state.filter}
           handleFilter={this.handleFilter}
-          fetchAllGames={this.props.fetchAllGames}
           isLoading={this.state.isLoading}
           navigatePages={this.navigatePages}
         ></AllGamesView>
