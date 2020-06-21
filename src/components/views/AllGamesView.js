@@ -17,6 +17,14 @@ let startOfNextWeek = moment()
   .add({ week: 1 })
   .startOf("week")
   .format("YYYY-MM-DD");
+let startOfLastWeek = moment()
+  .add({ week: -1 })
+  .startOf("week")
+  .format("YYYY-MM-DD");
+let endOfLastWeek = moment()
+  .add({ week: -1 })
+  .endOf("week")
+  .format("YYYY-MM-DD");
 
 function AllGamesView(props) {
   return (
@@ -82,6 +90,16 @@ function AllGamesView(props) {
                   >
                     {" "}
                     Next week
+                  </button>
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      dates: `${startOfLastWeek},${endOfLastWeek}`,
+                    })}
+                  >
+                    {" "}
+                    Last week
                   </button>
                   <button
                     className="btn btn-outline-danger btn-block"
