@@ -1,21 +1,22 @@
 import React from "react";
 import "./styles/GamePageView.css";
-import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer, AddLikeContainer } from "../containers";
-import { likes } from "../../reducers";
+import video1 from "./styles/BGvideo.mp4";
+import "./styles/AboutView.css";
 import { SRLWrapper } from "simple-react-lightbox";
 
 const GamePageView = (props) => {
   console.log("This is GamePageView --- view Props", props);
+  //console.log("screenshot 1", props.screenshot.results)
   return (
     <div>
       {props.game.name ? (
         <div>
           {/* {this div block is the clip section} */}
           <div className="container-fluid bgContainer p-0">
-            {props.game.clip ? (
+            {props.game.clip  ? (
               <video
                 className="bg"
                 playsInline="playsinline"
@@ -25,13 +26,29 @@ const GamePageView = (props) => {
               >
                 <source src={props.game.clip.clips.full} />
               </video>
-            ) : (
+            ) : props.game.background_image_additional  ? (
               <img
                 className="bg"
                 src={props.game.background_image_additional}
                 alt={props.game.name}
               ></img>
-            )}
+            ) : (
+              <div>
+              <video
+                id="video1"
+                playsInline="playsinline"
+                autoPlay="autoplay"
+                muted="muted"
+                loop="loop"
+              >
+                <source src={video1} type="video/mp4" />
+              </video>
+              <div className="overlay my-lg-5 d-flex justify-content-center align-items-center">
+                <h1>!! NO VIDEO OR PICTURE !!</h1>
+              </div>
+            </div>
+            )
+            }
 
             <div className="overlayBG p-5">
               <h1>{props.game.name}</h1>
@@ -39,6 +56,7 @@ const GamePageView = (props) => {
                 <a
                   className="btn btn-outline-danger pb-2 ml-2"
                   href={props.game.website}
+                  target = "_blank"
                 >
                   Official Website
                 </a>
@@ -72,17 +90,11 @@ const GamePageView = (props) => {
                     );
                   })}
 
-                  {/* {Like button work on later} */}
-                  {/*
-                  <button className="btn btn-outline-danger ml-auto">
-                    <i className="far fa-thumbs-up fa-2x"></i>
-                  </button>
-                  <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
-*/}
-
+                  {/* {This is like section} */}
                   <AddLikeContainer gameId={props.game.id} />
                   <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
                 </div>
+
 
                 {/* {this div block is the About section} */}
                 <h4 className="text-danger mt-3">About</h4>
@@ -101,17 +113,18 @@ const GamePageView = (props) => {
                 {/* {this div block is the developer and genres display section} */}
                 <div className="d-flex justify-content-between text-danger pt-4 mt-3">
                   <div>
-                    <h4>{props.game.developers[0].name}</h4>
+                    {props.game.developers[0] ? (<h4>{props.game.developers[0].name}</h4>) 
+                    : (<h4>---</h4>)}
                     <h6 className="text-center">
                       <u>Developer</u>
                     </h6>
                   </div>
-                  <div>
+                  <div className="overflow-auto">
                     <div className="d-flex">
                       {props.game.genres.map((genre) => {
                         return (
                           <div className="d-flex" key={genre.id}>
-                            <h4 className="ml-2" key={genre.id}>
+                            <h4 className="ml-2 text-break" key={genre.id}>
                               {genre.name},
                             </h4>
                           </div>
@@ -160,11 +173,11 @@ const GamePageView = (props) => {
           </div>
 
           {/* {this container block is the comment section} */}
-          <div className="container px-5">
+          <div className="container px-3">
             <div className="row mt-5 d-flex justify-content-center">
               <div className="pt-5">
                 <h2 className="text-danger text-center border border-danger rounded py-2 px-5">
-                  Comments About The Game
+                  Comments
                 </h2>
                 {props.comments.map((comment) => (
                   <div className="d-flex pt-1" key={comment.id}>
@@ -175,7 +188,7 @@ const GamePageView = (props) => {
                       </div>
 
                       <div className="pl-5">
-                        <h6 className="bg-danger text-white p-2 text-break">
+                        <h6 className="bg-danger text-white p-2">
                           {comment.commentContent}
                         </h6>
                       </div>

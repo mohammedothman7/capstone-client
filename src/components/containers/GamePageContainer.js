@@ -36,10 +36,6 @@ class GamePageContainer extends Component {
     });
   };
 
-  componentDidUpdate() {
-    window.scrollTo(0, 0);
-  }
-
   // Update search in state when user types
   handleChange = (event) => {
     this.setState({ search: event.target.value });
@@ -62,8 +58,6 @@ class GamePageContainer extends Component {
   };
 
   render() {
-    //console.log("this is gamepagecontainer", this.props.user.id);
-    console.log("this is gamepagecontainer --- render");
     return (
       <div>
         {this.state.userId ? (
@@ -92,9 +86,6 @@ class GamePageContainer extends Component {
 
 //map state to props
 const mapState = (state) => {
-  // console.log("state ss", state.screenshot);
-  console.log("This is mapState ---  games");
-  // console.log("state likes", state.likes);
   return {
     game: state.game,
     comments: state.comments,

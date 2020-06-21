@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addLikeThunk } from "../../thunks";
 import AddLikeView from "../views/AddLikeView";
-import { game } from "../../reducers";
 
 class AddLikeContainer extends Component {
   constructor(props) {
@@ -20,7 +19,6 @@ class AddLikeContainer extends Component {
       gameId: this.props.gameId,
       userId: this.props.user.id,
     });
-    console.log("this is addLikeContainer didmount", this.state);
   }
 
   handleAddLike = (e) => {
@@ -33,16 +31,17 @@ class AddLikeContainer extends Component {
     }
     if (!this.alreadyLiked) {
       this.props.addLike(this.state);
-    } else alert("You already liked this game before.");
+      this.alreadyLiked = true;
+    } 
+    else alert("You already liked this game.");
   };
 
   render() {
-    console.log("this AddLikeContainer");
 
     if (!this.state.userId)
       return (
         <Link to="/login" className="btn btn-outline-danger ml-auto">
-          <i class="far fa-thumbs-up fa-2x"></i>
+          <i className="far fa-thumbs-up fa-2x"></i>
         </Link>
       );
     else return <AddLikeView handleAddLike={this.handleAddLike} />;
@@ -51,7 +50,6 @@ class AddLikeContainer extends Component {
 
 //map state to props
 const mapStateToProps = (state) => {
-  console.log("!!!!!!!!!!!!!!", state.likes.rows);
   return {
     user: state.allUsers,
     likes: state.likes,
