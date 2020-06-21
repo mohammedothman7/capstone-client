@@ -8,3 +8,4 @@ export { default as NavBarView } from "./NavBarView";
 export { default as LoggedInNavBarView } from "./LoggedInNavBarView";
 export { default as AboutView } from "./AboutView";
 export { default as SearchGamesView } from "./SearchGamesView";
+export { default as AddLikeView } from "./AddLikeView";

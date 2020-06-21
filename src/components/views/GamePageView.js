@@ -3,7 +3,8 @@ import "./styles/GamePageView.css";
 import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
-import { AddCommentFormContainer } from "../containers";
+import { AddCommentFormContainer, AddLikeContainer } from "../containers";
+import { likes } from "../../reducers";
 import { SRLWrapper } from "simple-react-lightbox";
 
 const GamePageView = (props) => {
@@ -72,9 +73,14 @@ const GamePageView = (props) => {
                   })}
 
                   {/* {Like button work on later} */}
+                  {/*
                   <button className="btn btn-outline-danger ml-auto">
                     <i class="far fa-thumbs-up fa-2x"></i>
                   </button>
+                  <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
+*/}
+
+                  <AddLikeContainer gameId={props.game.id} />
                   <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
                 </div>
 
