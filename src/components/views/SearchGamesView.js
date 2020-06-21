@@ -1,7 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./styles/AllGamesView.css";
 
-export default function SearchGamesView(props) {
+function SearchGamesView(props) {
   return (
     <div>
       {props.searchGames !== undefined ? (
@@ -63,3 +64,5 @@ export default function SearchGamesView(props) {
     </div>
   );
 }
+
+export default withRouter(SearchGamesView);
