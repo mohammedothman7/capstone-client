@@ -9,12 +9,14 @@ let today = moment().format("YYYY-MM-DD");
 let startOfWeek = moment().startOf("week").format("YYYY-MM-DD");
 let endOfWeek = moment().endOf("week").format("YYYY-MM-DD");
 let lastThirtyDays = moment().subtract(30, "days").format("YYYY-MM-DD");
-let endOfNextWeek = moment().add({ week: 1 }).format("YYYY-MM-DD");
-let startOfNextWeek = moment().add({ week: 1, day: -6 }).format("YYYY-MM-DD");
-
-console.log(startOfNextWeek);
-
-// console.log(lol.format("YYYY-DD-MMMM"));
+let endOfNextWeek = moment()
+  .add({ week: 1 })
+  .endOf("week")
+  .format("YYYY-MM-DD");
+let startOfNextWeek = moment()
+  .add({ week: 1 })
+  .startOf("week")
+  .format("YYYY-MM-DD");
 
 function AllGamesView(props) {
   return (
@@ -78,6 +80,7 @@ function AllGamesView(props) {
                       dates: `${startOfNextWeek},${endOfNextWeek}`,
                     })}
                   >
+                    {" "}
                     Next week
                   </button>
                   <button
@@ -243,13 +246,13 @@ function AllGamesView(props) {
                   </select>
                   <button
                     className="btn btn-outline-danger ml-2 float-right"
-                    onClick={props.navigatePages(-1)}
+                    onClick={props.navigatePages("next")}
                   >
                     Next Page
                   </button>
                   <button
                     className="btn btn-outline-danger float-right"
-                    onClick={props.navigatePages(-2)}
+                    onClick={props.navigatePages("previous")}
                   >
                     Previous Page
                   </button>
@@ -281,13 +284,13 @@ function AllGamesView(props) {
                   </div>
                   <button
                     className="btn btn-outline-danger"
-                    onClick={props.navigatePages(-2)}
+                    onClick={props.navigatePages("previous")}
                   >
                     Previous Page
                   </button>
                   <button
                     className="btn btn-outline-danger ml-2"
-                    onClick={props.navigatePages(-1)}
+                    onClick={props.navigatePages("next")}
                   >
                     Next Page
                   </button>
