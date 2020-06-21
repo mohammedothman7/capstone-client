@@ -119,7 +119,7 @@ const GamePageView = (props) => {
                       })}
                     </div>
                     <div>
-                      <h6 className="text-center mb-4">
+                      <h6 className="text-center mb-3">
                         <u>Genres</u>
                       </h6>
                     </div>

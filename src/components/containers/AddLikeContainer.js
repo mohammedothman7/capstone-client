@@ -26,13 +26,14 @@ class AddLikeContainer extends Component {
   handleAddLike = (e) => {
     e.preventDefault();
 
-    this.props.likes.rows.map((like) => {
-      if (like.userId === this.props.user.id) this.alreadyLiked = true;
-    });
+    if (typeof this.props.likes.rows.map == "function") {
+      this.props.likes.rows.map((like) => {
+        if (like.userId === this.props.user.id) this.alreadyLiked = true;
+      });
+    }
     if (!this.alreadyLiked) {
       this.props.addLike(this.state);
-      alert("yay~ you liked");
-    } else alert("you already liked this game before");
+    } else alert("You already liked this game before.");
   };
 
   render() {
@@ -40,8 +41,8 @@ class AddLikeContainer extends Component {
 
     if (!this.state.userId)
       return (
-        <Link to="/login">
-          <button className="btn btn-outline-danger ml-5">Login to like</button>
+        <Link to="/login" className="btn btn-outline-danger ml-auto">
+          <i class="far fa-thumbs-up fa-2x"></i>
         </Link>
       );
     else return <AddLikeView handleAddLike={this.handleAddLike} />;

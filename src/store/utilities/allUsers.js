@@ -41,6 +41,7 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
       const loggedUser = { ...user };
       if (Object.keys(loggedUser).length === 0) {
         console.log("FAIL");
+        alert("Incorrect username and / or password");
       } else {
         console.log(loggedUser);
         dispatch(login(loggedUser));
