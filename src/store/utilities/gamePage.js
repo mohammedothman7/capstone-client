@@ -2,6 +2,7 @@ import axios from "axios";
 
 //Action Types
 const FETCH_GAME = "FETCH_GAME";
+const CLEAR_GAME = "CLEAR_GAME";
 
 //Action Creators
 const fetchGame = (game) => {
@@ -11,6 +12,11 @@ const fetchGame = (game) => {
   };
 };
 
+const clearGame = () => {
+  return {
+    type: CLEAR_GAME,
+  };
+};
 
 //Thunk Creators
 export const fetchGameThunk = (id) => (dispatch) => {
@@ -21,11 +27,18 @@ export const fetchGameThunk = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const clearGameThunk = (dispatch) => {
+  return dispatch(clearGame());
+};
+
 //Reducer
-const reducer = (state = {}, action) => {
+const initialState = {};
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_GAME:
       return  action.payload;
+    case CLEAR_GAME:
+        return initialState;
     default:
       return state;
   }

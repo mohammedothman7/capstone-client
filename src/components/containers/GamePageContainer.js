@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchGameThunk, fetchCommentsThunk,fetchSSThunk } from "../../thunks";
 import { GamePageView } from "../views";
 import { NavBarView } from "../views";
+import SimpleReactLightbox from "simple-react-lightbox";
 import { LoggedInNavBarContainer } from ".";
 
 class GamePageContainer extends Component {
@@ -30,11 +31,13 @@ class GamePageContainer extends Component {
     return (
       <div>
       <NavBarView />
-      <GamePageView
+      <SimpleReactLightbox>
+       <GamePageView
         game={this.props.game}
         comments={this.props.comments}
         screenshot={this.props.screenshot}
       />
+       </SimpleReactLightbox>
       </div>
     );
   };

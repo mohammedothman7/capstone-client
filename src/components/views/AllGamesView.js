@@ -50,7 +50,7 @@ function AllGamesView(props) {
       <div className = "row row-cols-1 row-cols-md-3 pt-4">
         {props.games.map((game) => {
           return (
-            <div className = "col mb-4 parentContainer" key={game.id} onClick={() =>    {props.history.push(`/gamePage/${game.id}`)} }>
+            <div className = "col mb-4 parentContainer" key={game.id} onClick={() => {props.history.push(`/gamePage/${game.id}`)} }>
               <div className ="card">
               <img
                 className = "card-img-top"

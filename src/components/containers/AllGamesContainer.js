@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AllGamesView } from "../views";
-import { fetchAllGamesThunk } from "../../thunks";
+import { fetchAllGamesThunk, clearGameThunk } from "../../thunks";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -19,16 +19,16 @@ export class AllGamesContainer extends Component {
   componentDidMount() {
     // Call thunk to fetch games from API
     this.props.fetchAllGames(this.state.filter);
-
+    this.props.clearGame();
     // Store all games from redux store in games variable
     const games = this.props.allGames;
     // Add the games we got from the store to state, so it can be rendered.
     this.setState({ games });
   }
 
-  componentDidUpdate() {
-    window.scrollTo(0, 0);
-  }
+  //componentDidUpdate() {
+ //   window.scrollTo(0, 0);
+ // }
 
   // Sends the params to state, so it can be sent to backend for API call
   handleFilter = (filter) => (event) => {
@@ -57,10 +57,6 @@ export class AllGamesContainer extends Component {
     this.props.fetchAllGames(param);
   };
 
- navigateTo() {
-    window.location.href = "/gamePage/2";
-  }
-
   render() {
     console.log("user information here*****", this.props.user);
     return (
@@ -82,6 +78,7 @@ const mapState = (state) => {
   return {
     allGames: state.allGames,
     user: state.allUsers,
+    game: state.game
   };
 };
 
@@ -90,6 +87,7 @@ const mapDispatch = (dispatch) => {
   //console.log('In mapDispatch');
   return {
     fetchAllGames: (params) => dispatch(fetchAllGamesThunk(params)),
+    clearGame: () => dispatch(clearGameThunk),
   };
 };
 
