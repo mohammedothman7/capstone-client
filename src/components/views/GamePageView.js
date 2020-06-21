@@ -39,6 +39,7 @@ const GamePageView = (props) => {
                 <a
                   className="btn btn-outline-danger pb-2 ml-2"
                   href={props.game.website}
+                  target = "_blank"
                 >
                   Official Website
                 </a>
