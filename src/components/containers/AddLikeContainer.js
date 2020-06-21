@@ -26,12 +26,14 @@ class AddLikeContainer extends Component {
   handleAddLike = (e) => {
     e.preventDefault();
 
-    this.props.likes.rows.map((like) => {
-      if (like.userId === this.props.user.id) this.alreadyLiked = true;
-    });
+    if (typeof this.props.likes.rows.map == "function") {
+      this.props.likes.rows.map((like) => {
+        if (like.userId === this.props.user.id) this.alreadyLiked = true;
+      });
+    }
     if (!this.alreadyLiked) {
       this.props.addLike(this.state);
-      alert("yay~ you liked");
+       
     } else alert("you already liked this game before");
   };
 
