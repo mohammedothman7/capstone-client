@@ -3,6 +3,7 @@ import axios from "axios";
 //Action Types
 const FETCH_GAME = "FETCH_GAME";
 const CLEAR_GAME = "CLEAR_GAME";
+
 //Action Creators
 const fetchGame = (game) => {
   return {

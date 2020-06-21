@@ -8,6 +8,7 @@ import {
 } from "../../thunks";
 import { GamePageView } from "../views";
 import { NavBarView } from "../views";
+import SimpleReactLightbox from "simple-react-lightbox";
 import { LoggedInNavBarContainer } from ".";
 
 class GamePageContainer extends Component {
@@ -42,12 +43,14 @@ class GamePageContainer extends Component {
       <div>
         {this.state.userId ? <LoggedInNavBarContainer /> : <NavBarView />}
         <div>
-          <GamePageView
-            game={this.props.game}
-            comments={this.props.comments}
-            screenshot={this.props.screenshot}
-            likes={this.props.likes}
-          />
+          <SimpleReactLightbox>
+            <GamePageView
+              game={this.props.game}
+              comments={this.props.comments}
+              screenshot={this.props.screenshot}
+              likes={this.props.likes}
+            />
+          </SimpleReactLightbox>
         </div>
       </div>
     );
