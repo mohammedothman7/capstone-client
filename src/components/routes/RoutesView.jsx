@@ -5,6 +5,7 @@ import {
   RegisterFormContainer,
   AboutContainer,
   GamePageContainer,
+  SearchGamesContainer,
   LoggedInNavBarContainer,
   NavBarContainer,
 } from "../containers";
@@ -18,6 +19,7 @@ const RoutesView = () => {
       <Route exact path="/about" component={AboutContainer} />
       <Route exact path="/gamePage/:id" component={GamePageContainer} />
       <Route exact path="/loginNav" component={LoggedInNavBarContainer} />
+      <Route exact path="/search" component={SearchGamesContainer} />
     </Switch>
   );
 };
