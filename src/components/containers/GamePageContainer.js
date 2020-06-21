@@ -15,7 +15,7 @@ class GamePageContainer extends Component {
   }
 
   componentDidMount = () => {
-    console.log("this is gamepagecontainer didmount");
+    //console.log("this is gamepagecontainer didmount");
     this.props.fetchGame(this.props.match.params.id);
     this.props.fetchComment(this.props.match.params.id);
     this.props.fetchSS(this.props.match.params.id);
@@ -25,8 +25,12 @@ class GamePageContainer extends Component {
     });
   };
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
-    console.log("this is gamepagecontainer", this.props.user.id);
+    //console.log("this is gamepagecontainer", this.props.user.id);
     return (
       <div>
         {this.state.userId ? <LoggedInNavBarContainer /> : <NavBarView />}

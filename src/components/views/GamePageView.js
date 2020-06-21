@@ -7,6 +7,7 @@ import { AddCommentFormContainer } from "../containers";
 
 const GamePageView = (props) => {
   console.log("view Props", props);
+
   return (
     <div>
       {props.game.name ? (
