@@ -2,6 +2,13 @@ import React from "react";
 import "./styles/AllGamesView.css";
 import { withRouter } from "react-router-dom";
 
+// Get the date and format it correctly for best of year button
+const date = new Date();
+let year = date.getFullYear();
+let month = ("0" + (date.getMonth() + 1)).slice(-2);
+let day = ("0" + date.getDate()).slice(-2);
+let today = `${year}-${month}-${day}`;
+
 function AllGamesView(props) {
   console.log(props.games);
   return (
@@ -16,13 +23,26 @@ function AllGamesView(props) {
                 <br />
                 <div className="ml-4">
                   <h3 className="text-danger text-center">Top</h3>
-                  <button className="btn btn-outline-danger btn-block">
-                    Popular in 2020
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      ordering: "-added",
+                      dates: `${year}-01-01,${today}`,
+                    })}
+                    value="Best of Year"
+                  >
+                    Popular in {year}
                   </button>
                   <button className="btn btn-outline-danger btn-block">
                     All Time Greatest
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      ordering: "-rating",
+                    })}
+                    value="Top Rated"
+                  >
                     Top Rated
                   </button>
                 </div>
@@ -61,37 +81,93 @@ function AllGamesView(props) {
 
                 <div className="ml-4 pt-4 mt-5">
                   <h3 className="text-danger text-center">Genres</h3>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "action" })}
+                    value="action"
+                  >
                     Action
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      genres: "adventure",
+                    })}
+                    value="adventure"
+                  >
                     Adventure
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
-                    Horror
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "arcade" })}
+                    value="arcade"
+                  >
+                    Arcade
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "casual" })}
+                    value="casual"
+                  >
+                    Casual
+                  </button>
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      genres: "platformer",
+                    })}
+                    value="platformer"
+                  >
                     Platformer
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "puzzle" })}
+                    value="puzzle"
+                  >
                     Puzzle
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "racing" })}
+                    value="racing"
+                  >
                     Racing
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
-                    Rhythm
-                  </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      genres: "role-playing-games-rpg",
+                    })}
+                    value="role-playing-games-rpg"
+                  >
                     Role-Playing
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "shooter" })}
+                    value="shooter"
+                  >
                     Shooter
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({ page: 1, genres: "sports" })}
+                    value="sports"
+                  >
                     Sports
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      genres: "strategy",
+                    })}
+                    value="strategy"
+                  >
                     Strategy
                   </button>
                 </div>
@@ -130,13 +206,13 @@ function AllGamesView(props) {
                   </div>
                   <button
                     className="btn btn-outline-danger"
-                    onClick={props.handleFilter({ page: -2 })}
+                    onClick={props.navigatePages({ page: -2 })}
                   >
                     Previous Page
                   </button>
                   <button
                     className="btn btn-outline-danger ml-2"
-                    onClick={props.handleFilter({ page: -1 })}
+                    onClick={props.navigatePages({ page: -1 })}
                   >
                     Next Page
                   </button>
@@ -145,6 +221,19 @@ function AllGamesView(props) {
             </div>
             <div className="container-fluid mt-4 bg-light p-2 text-center">
               <h6>2020 GameCord</h6>
+
+              {/*              
+      <button
+        onClick={props.handleFilter({
+          page: 1,
+          ordering: "",
+          dates: "",
+        })}
+        value="trending"
+      >
+        Trending
+      </button>
+      */}
             </div>
           </div>
         </div>
