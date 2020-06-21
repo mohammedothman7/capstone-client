@@ -3,7 +3,8 @@ import "./styles/GamePageView.css";
 import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
-import { AddCommentFormContainer } from "../containers";
+import { AddCommentFormContainer, AddLikeContainer } from "../containers";
+import { likes } from "../../reducers";
 const GamePageView = (props) => {
   console.log("This is GamePageView --- view Props", props);
   return (
@@ -79,11 +80,14 @@ const GamePageView = (props) => {
                   })}
 
                   {/* {Like button work on later} */}
-                  {/* <button className="btn  btn-outline-danger ml-auto">
+
+                  <AddLikeContainer gameId={props.game.id} />
+                  {/* { props.userId ? <button className="btn  btn-outline-danger ml-auto">
                     <i class="far fa-thumbs-up fa-2x"></i>
-                  </button> */}
+                  </button> : <h1>log in to like</h1>} */}
 
                 <h1>Like count: {props.likes.count}</h1>
+
                 </div>
 
 

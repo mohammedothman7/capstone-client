@@ -7,3 +7,4 @@ export { default as AllGamesContainer } from "./AllGamesContainer";
 export { default as NavBarContainer } from "./NavBarContainer";
 export { default as LoggedInNavBarContainer } from "./LoggedInNavBarContainer";
 export { default as AboutContainer } from "./AboutContainer";
+export { default as AddLikeContainer } from "./AddLikeContainer";

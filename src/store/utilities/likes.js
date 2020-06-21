@@ -1,4 +1,5 @@
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 //Action Types
 const ADD_LIKE = "ADD_LIKE";
@@ -28,27 +29,26 @@ export const fetchLikesThunk = (gameId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const addLikesThunk = (like) => (dispatch) => {
-//   return axios
-//     .post(`/api/likes/${newComment.gameId}`, newComment)
-//     .then((res) => res.data)
-//     .then((newComment) => {
-//       dispatch(addComment(newComment));
-//       console.log("~~~~~~~~~~~~" + newComment);
-//       console.log("this is addcommentthunk" + newComment.user.username);
-      
-//       // ownProps.history.push(`/gamePage/${newComment.gameId}`)
-//     })
-//     .catch((err) => console.log(err));
-// };
+export const addLikeThunk = (like) => (dispatch) => {
+    console.log("()()()()()()()()()()()" + like.count);
+  return axios
+    .post(`/api/likes/${like.gameId}`, like)
+    .then((res) => res.data)
+    .then((newLike) => {
+      dispatch(addLike(newLike));
+      console.log("~~~~~~~~~~~~" + newLike.count);
+      console.log("this is addcommentthunk" + newLike.gameId);
+    })
+    .catch((err) => console.log(err));
+};
 
 //Reducer
 const reducer = (state = {} , action) => {
   switch (action.type) {
     case FETCH_LIKES:
       return action.payload;
-    // case ADD_COMMENT:
-    //   return [...state, action.payload];
+    case ADD_LIKE:
+     return {...state, rows:action.payload}
     default:
       return state;
   }
