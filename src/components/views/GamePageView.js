@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles/GamePageView.css";
-import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
