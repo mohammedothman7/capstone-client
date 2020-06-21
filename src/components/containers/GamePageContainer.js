@@ -5,12 +5,14 @@ import {
   fetchCommentsThunk,
   fetchSSThunk,
   fetchLikesThunk,
+  fetchSearchedGamesThunk,
   addLikeThunk,
 } from "../../thunks";
 import { GamePageView } from "../views";
 import { NavBarView } from "../views";
-import SimpleReactLightbox from "simple-react-lightbox";
 import { LoggedInNavBarContainer } from ".";
+import SimpleReactLightbox from "simple-react-lightbox";
+import { withRouter } from "react-router-dom";
 
 class GamePageContainer extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class GamePageContainer extends Component {
     this.state = {
       username: "",
       userId: null,
+      search: "",
     };
   }
 
@@ -37,12 +40,41 @@ class GamePageContainer extends Component {
     window.scrollTo(0, 0);
   }
 
+  // Update search in state when user types
+  handleChange = (event) => {
+    this.setState({ search: event.target.value });
+  };
+
+  // Call API to search for games based on user input
+  handleClick = (event) => {
+    event.preventDefault(); // Prevent Page from refreshing
+    const search = this.state.search; // Get search from state
+
+    // Check if user inputted anything in search field
+    if (search.length > 0) {
+      // Call fetchSearchedGames to send input from user to thunk then to API
+      this.props.fetchSearchedGames(this.state.search);
+      this.props.history.push("/search"); // Change route to /search with search games data
+    } else {
+      // If user did not enter anything in search field, then load home page
+      this.props.history.push("/");
+    }
+  };
+
   render() {
     //console.log("this is gamepagecontainer", this.props.user.id);
     console.log("this is gamepagecontainer --- render");
     return (
       <div>
-        {this.state.userId ? <LoggedInNavBarContainer /> : <NavBarView />}
+        {this.state.userId ? (
+          <LoggedInNavBarContainer />
+        ) : (
+          <NavBarView
+            search={this.state.search}
+            handleChange={this.handleChange}
+            handleClick={this.handleClick}
+          />
+        )}
         <div>
           <SimpleReactLightbox>
             <GamePageView
@@ -79,8 +111,9 @@ const mapDispatch = (dispatch) => {
     fetchComment: (id) => dispatch(fetchCommentsThunk(id)),
     fetchSS: (id) => dispatch(fetchSSThunk(id)),
     fetchLikes: (id) => dispatch(fetchLikesThunk(id)),
+    fetchSearchedGames: (params) => dispatch(fetchSearchedGamesThunk(params)),
     addLike: (newLike) => dispatch(addLikeThunk(newLike)),
   };
 };
 
-export default connect(mapState, mapDispatch)(GamePageContainer);
+export default connect(mapState, mapDispatch)(withRouter(GamePageContainer));
