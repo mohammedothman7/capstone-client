@@ -23,6 +23,9 @@ class LoggedInNavBarContainer extends Component {
   }
 
   handleOnClick = () => {
+    if (window.location.pathname === "/search") {
+      this.props.history.push("/");
+    }
     window.location.reload();
     /*
     this.setState({
