@@ -5,3 +5,4 @@ export * from "../store/utilities/allUsers";
 export * from "../store/utilities/allGames";
 export * from "../store/utilities/searchGames";
 export * from "../store/utilities/screenShots";
+export * from "../store/utilities/likes";

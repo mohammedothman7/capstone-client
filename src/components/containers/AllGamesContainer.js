@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { AllGamesView } from "../views";
-import { fetchAllGamesThunk, fetchGenreGamesThunk } from "../../thunks";
+import {
+  fetchAllGamesThunk,
+  fetchGenreGamesThunk,
+  clearGameThunk,
+} from "../../thunks";
 import { connect } from "react-redux";
 
 export class AllGamesContainer extends Component {
@@ -23,6 +27,7 @@ export class AllGamesContainer extends Component {
 
     // Call thunk to fetch games from API
     await this.props.fetchAllGames({ page, page_size });
+    this.props.clearGame();
 
     this.setState({ games: this.props.allGames });
   }
@@ -124,6 +129,7 @@ export class AllGamesContainer extends Component {
 
   render() {
     console.log("user information here*****", this.props.user);
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", this.props.game);
     return (
       <div>
         <AllGamesView
@@ -146,6 +152,7 @@ const mapState = (state) => {
     user: state.allUsers,
     allGames: state.allGames,
     genre: state.allGames,
+    game: state.game,
   };
 };
 
@@ -155,6 +162,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllGames: (params) => dispatch(fetchAllGamesThunk(params)),
     fetchGenreGames: (genre) => dispatch(fetchGenreGamesThunk(genre)),
+    clearGame: () => dispatch(clearGameThunk),
   };
 };
 

@@ -6,8 +6,7 @@ import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
 
 const GamePageView = (props) => {
-  console.log("view Props", props);
-
+  console.log("This is GamePageView --- view Props", props);
   return (
     <div>
       {props.game.name ? (
@@ -72,9 +71,10 @@ const GamePageView = (props) => {
                   })}
 
                   {/* {Like button work on later} */}
-                  {/* <button className="btn  btn-outline-danger ml-auto">
+                  <button className="btn btn-outline-danger ml-auto">
                     <i class="far fa-thumbs-up fa-2x"></i>
-                  </button> */}
+                  </button>
+                  <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
                 </div>
 
                 {/* {this div block is the About section} */}

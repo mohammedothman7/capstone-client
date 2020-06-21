@@ -6,3 +6,4 @@ export { default as allUsers } from "../store/utilities/allUsers";
 export { default as allGames } from "../store/utilities/allGames";
 export { default as searchGames } from "../store/utilities/searchGames";
 export { default as screenshot } from "../store/utilities/screenShots";
+export { default as likes } from "../store/utilities/likes";
