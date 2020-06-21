@@ -126,12 +126,12 @@ const GamePageView = (props) => {
                       <u>Developer</u>
                     </h6>
                   </div>
-                  <div>
+                  <div className="overflow-auto">
                     <div className="d-flex">
                       {props.game.genres.map((genre) => {
                         return (
                           <div className="d-flex" key={genre.id}>
-                            <h4 className="ml-2" key={genre.id}>
+                            <h4 className="ml-2 text-break" key={genre.id}>
                               {genre.name},
                             </h4>
                           </div>
@@ -195,7 +195,7 @@ const GamePageView = (props) => {
                       </div>
 
                       <div className="pl-5">
-                        <h6 className="bg-danger text-white p-2 text-break">
+                        <h6 className="bg-danger text-white p-2">
                           {comment.commentContent}
                         </h6>
                       </div>
