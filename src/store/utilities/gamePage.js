@@ -11,6 +11,7 @@ const fetchGame = (game) => {
   };
 };
 
+
 //Thunk Creators
 export const fetchGameThunk = (id) => (dispatch) => {
   return axios
@@ -24,7 +25,7 @@ export const fetchGameThunk = (id) => (dispatch) => {
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_GAME:
-      return action.payload;
+      return  action.payload;
     default:
       return state;
   }

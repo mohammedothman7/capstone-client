@@ -6,15 +6,10 @@ import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
 const GamePageView = (props) => {
   console.log("view Props", props);
+
   return (
     <div>
-
-      {/* {redirect to home page} */}
-      <Link to="/">
-        <button>Home page</button>
-      </Link>
-
-      {props.game.name ? (
+      {props.game.name? (
         <div>
 
         {/* {this div block is the clip section} */}
@@ -142,14 +137,14 @@ const GamePageView = (props) => {
                       >
                         {console.log("keyid", comment.id)}
 
+                        <div>
+                          <h5>Username: {comment.user.username}</h5>
+                        </div>
+
                         <div className="pl-5">
                           <h6 className="bg-danger text-white p-2 text-break">
                             {comment.commentContent}
                           </h6>
-                        </div>
-
-                        <div>
-                          <h5>Username: {comment.user.username}</h5>
                         </div>
                       </div>
                     </div>

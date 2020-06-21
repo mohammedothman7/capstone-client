@@ -15,20 +15,27 @@ class GamePageContainer extends Component {
   }
 
   componentDidMount = () => {
-    console.log("this is gamepagecontainer didmount");
+    //console.log("this is gamepagecontainer didmount");
     this.props.fetchGame(this.props.match.params.id);
     this.props.fetchComment(this.props.match.params.id);
     this.props.fetchSS(this.props.match.params.id);
   };
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
-    console.log("this is gamepagecontainer", this.props.user.id);
+    //console.log("this is gamepagecontainer", this.props.user.id);
     return (
+      <div>
+      <NavBarView />
       <GamePageView
         game={this.props.game}
         comments={this.props.comments}
         screenshot={this.props.screenshot}
       />
+      </div>
     );
   };
 

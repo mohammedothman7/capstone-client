@@ -19,7 +19,7 @@ const fetchSS = (screenshot) => {
 
   const reducer = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_SS:
+      case FETCH_SS:
           return action.payload;
       default:
         return state;
