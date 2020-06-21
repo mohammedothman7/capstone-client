@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
 import ReadMoreReact from "read-more-react";
 import { AddCommentFormContainer } from "../containers";
+import { SRLWrapper } from "simple-react-lightbox";
 
 const GamePageView = (props) => {
   console.log("This is GamePageView --- view Props", props);
@@ -124,25 +125,30 @@ const GamePageView = (props) => {
 
               {/* {this div block is the screenshot section} */}
               <div className="col">
-                {props.screenshot ? (
-                  <div className="row row-cols-1 row-cols-md-2 pt-4">
-                    {props.screenshot.results.map((result) => {
-                      return (
-                        <div className="col mb-4" key={result.id}>
-                          <div className="card">
-                            <img
-                              className="card-img-top set-ss-height"
-                              alt="ss"
-                              src={result.image}
-                            />
+                <SRLWrapper>
+                  {props.screenshot ? (
+                    <div className="row row-cols-1 row-cols-md-2 pt-4">
+                      {props.screenshot.results.map((result) => {
+                        return (
+                          <div
+                            className="col mb-4 parentContainerSS"
+                            key={result.id}
+                          >
+                            <div className="card">
+                              <img
+                                className="card-img-top set-ss-height"
+                                alt="Screenshots"
+                                src={result.image}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <></>
-                )}
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </SRLWrapper>
               </div>
             </div>
           </div>
