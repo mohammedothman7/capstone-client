@@ -243,13 +243,13 @@ function AllGamesView(props) {
                   </select>
                   <button
                     className="btn btn-outline-danger ml-2 float-right"
-                    onClick={props.navigatePages({ page: -1 })}
+                    onClick={props.navigatePages(-1)}
                   >
                     Next Page
                   </button>
                   <button
                     className="btn btn-outline-danger float-right"
-                    onClick={props.navigatePages({ page: -2 })}
+                    onClick={props.navigatePages(-2)}
                   >
                     Previous Page
                   </button>
