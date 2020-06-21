@@ -16,15 +16,12 @@ class AddCommentFormContainer extends Component {
   }
 
   componentDidMount() {
-    // this.setState({gameId: this.props.match.params.id, userId: 2});
     const user = { ...this.props.user };
-    //console.log("before set state  ", user);
     this.setState({
       gameId: this.props.gameId,
       userId: this.props.user.id,
       user: user,
     });
-    // console.log("this is addcommentform  didmount", this.state);
   }
 
   handleChange = (e) => {
@@ -38,8 +35,6 @@ class AddCommentFormContainer extends Component {
   };
 
   render() {
-    // console.log("this addcommentformcontainer");
-
     if (!this.state.userId)
       return (
         <div className="d-flex justify-content-center">
