@@ -42,12 +42,12 @@ export const addLikeThunk = (like) => (dispatch) => {
 };
 
 //Reducer
-const reducer = (state = {} , action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_LIKES:
       return action.payload;
     case ADD_LIKE:
-     return {...state, count: state.count+1, rows:action.payload}
+      return { ...state, count: state.count + 1, rows: action.payload };
     default:
       return state;
   }

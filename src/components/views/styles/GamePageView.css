@@ -29,3 +29,13 @@
   color: whitesmoke;
   font-size: 20px;
 }
+
+.SS > * {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: 300ms opacity, 300ms transform;
+}
+
+.SS :hover > *:hover {
+  transform: scale(1.1);
+}

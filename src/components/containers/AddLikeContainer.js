@@ -43,13 +43,9 @@ class AddLikeContainer extends Component {
 
     if (!this.state.userId)
       return (
-        <div>
-          <Link to="/login">
-            <button className="btn btn-outline-danger text-center">
-              Login to like your game
-            </button>{" "}
-          </Link>
-        </div>
+        <Link to="/login" className="btn btn-outline-danger ml-auto">
+          <i className="far fa-thumbs-up fa-2x"></i>
+        </Link>
       );
     else return <AddLikeView handleAddLike={this.handleAddLike} />;
   }
