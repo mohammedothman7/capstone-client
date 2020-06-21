@@ -110,7 +110,7 @@ function AllGamesView(props) {
                       parent_platforms: 3,
                     })}
                   >
-                    XBox
+                    Xbox
                   </button>
                   <button
                     className="btn btn-outline-danger btn-block"
