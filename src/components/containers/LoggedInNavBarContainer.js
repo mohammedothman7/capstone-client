@@ -8,6 +8,7 @@ class LoggedInNavBarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       userId: null,
       search: "",
     };
@@ -17,6 +18,7 @@ class LoggedInNavBarContainer extends Component {
     const user = { ...this.props.user };
     console.log("before set state  ", user);
     this.setState({
+      username: this.props.user.username,
       userId: this.props.user.id,
     });
     console.log("this is navbarcontainer  didmount", this.state);
@@ -59,6 +61,7 @@ class LoggedInNavBarContainer extends Component {
   render() {
     return (
       <LoggedInNavBarView
+        user={this.state.username}
         onClick={this.handleOnClick}
         search={this.state.search}
         handleChange={this.handleChange}
