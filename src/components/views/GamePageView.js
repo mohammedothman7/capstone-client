@@ -73,7 +73,7 @@ const GamePageView = (props) => {
 
                   {/* {Like button work on later} */}
                   <button className="btn btn-outline-danger ml-auto">
-                    <i class="far fa-thumbs-up fa-2x"></i>
+                    <i className="far fa-thumbs-up fa-2x"></i>
                   </button>
                   <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
                 </div>
@@ -161,7 +161,7 @@ const GamePageView = (props) => {
                   Comments About The Game
                 </h2>
                 {props.comments.map((comment) => (
-                  <div className="d-flex pt-1">
+                  <div className="d-flex pt-1" key={comment.id}>
                     <div key={comment.id}>
                       {console.log("keyid", comment.id)}
                       <div>
