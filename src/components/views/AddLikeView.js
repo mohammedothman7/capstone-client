@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 const AddLikeView = (props) => {
   return (
     <button className="btn  btn-outline-danger ml-auto" onClick={props.handleAddLike}>
-      <i class="far fa-thumbs-up fa-2x"></i>
+       <i className="far fa-thumbs-up fa-2x"></i>
     </button>
   );
 };

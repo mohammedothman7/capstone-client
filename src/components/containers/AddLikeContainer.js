@@ -33,8 +33,9 @@ class AddLikeContainer extends Component {
     }
     if (!this.alreadyLiked) {
       this.props.addLike(this.state);
-       
-    } else alert("you already liked this game before");
+      this.alreadyLiked = true;
+    } 
+    else alert("You already liked this game before.");
   };
 
   render() {
