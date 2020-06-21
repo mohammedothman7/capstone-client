@@ -1,19 +1,25 @@
 import React from "react";
 import "./styles/AllGamesView.css";
 import { withRouter } from "react-router-dom";
+import moment from "moment";
 
 // Get the date and format it correctly for best of year button
-const date = new Date();
-let year = date.getFullYear();
-let month = ("0" + (date.getMonth() + 1)).slice(-2);
-let day = ("0" + date.getDate()).slice(-2);
-let today = `${year}-${month}-${day}`;
+let year = moment().year();
+let today = moment().format("YYYY-MM-DD");
+let startOfWeek = moment().startOf("week").format("YYYY-MM-DD");
+let endOfWeek = moment().endOf("week").format("YYYY-MM-DD");
+let lastThirtyDays = moment().subtract(30, "days").format("YYYY-MM-DD");
+let endOfNextWeek = moment().add({ week: 1 }).format("YYYY-MM-DD");
+let startOfNextWeek = moment().add({ week: 1, day: -6 }).format("YYYY-MM-DD");
+
+console.log(startOfNextWeek);
+
+// console.log(lol.format("YYYY-DD-MMMM"));
 
 function AllGamesView(props) {
-  console.log(props.games);
   return (
     <div>
-      {props.games.length > 0 ? (
+      {props.games.length > 0 && !props.isLoading ? (
         <div>
           <div className="container-fluid">
             <div className="row">
@@ -26,15 +32,22 @@ function AllGamesView(props) {
                   <button
                     className="btn btn-outline-danger btn-block"
                     onClick={props.handleFilter({
+                      page: 1,
+                      ordering: "-added",
+                    })}
+                    value="popular"
+                  >
+                    Popular
+                  </button>
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
                       ordering: "-added",
                       dates: `${year}-01-01,${today}`,
                     })}
                     value="Best of Year"
                   >
-                    Popular in {year}
-                  </button>
-                  <button className="btn btn-outline-danger btn-block">
-                    All Time Greatest
+                    Best of {year}
                   </button>
                   <button
                     className="btn btn-outline-danger btn-block"
@@ -49,32 +62,80 @@ function AllGamesView(props) {
 
                 <div className="ml-4 pt-4 mt-5">
                   <h3 className="text-danger text-center">New Releases</h3>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      dates: `${startOfWeek},${endOfWeek}`,
+                    })}
+                  >
                     This week
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      dates: `${startOfNextWeek},${endOfNextWeek}`,
+                    })}
+                  >
                     Next week
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      dates: `${lastThirtyDays},${today}`,
+                    })}
+                  >
                     Last 30 days
                   </button>
                 </div>
 
                 <div className="ml-4 pt-4 mt-5">
                   <h3 className="text-danger text-center">Platforms</h3>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      parent_platforms: 2,
+                    })}
+                  >
                     Playstation
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
-                    XBox
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      parent_platforms: 3,
+                    })}
+                  >
+                    Xbox
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      parent_platforms: 7,
+                    })}
+                  >
                     Nintendo
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      parent_platforms: 5,
+                    })}
+                  >
                     Mac
                   </button>
-                  <button className="btn btn-outline-danger btn-block">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={props.handleFilter({
+                      page: 1,
+                      parent_platforms: 1,
+                    })}
+                  >
                     PC
                   </button>
                 </div>
@@ -218,24 +279,23 @@ function AllGamesView(props) {
                       );
                     })}
                   </div>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={props.navigatePages(-2)}
+                  >
+                    Previous Page
+                  </button>
+                  <button
+                    className="btn btn-outline-danger ml-2"
+                    onClick={props.navigatePages(-1)}
+                  >
+                    Next Page
+                  </button>
                 </div>
               </div>
             </div>
             <div className="container-fluid mt-4 bg-light p-2 text-center">
               <h6>2020 GameCord</h6>
-
-              {/*              
-      <button
-        onClick={props.handleFilter({
-          page: 1,
-          ordering: "",
-          dates: "",
-        })}
-        value="trending"
-      >
-        Trending
-      </button>
-      */}
             </div>
           </div>
         </div>

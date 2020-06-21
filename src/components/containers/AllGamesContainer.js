@@ -78,6 +78,13 @@ export class AllGamesContainer extends Component {
       delete param.dates;
     }
 
+    if (filter.parent_platforms) {
+      param.parent_platforms = filter.parent_platforms;
+      param.page = 1;
+    } else {
+      delete param.parent_platforms;
+    }
+
     if (event.target.value === "trending") {
       param.page = 1;
     }
@@ -119,6 +126,13 @@ export class AllGamesContainer extends Component {
     // Call Thunk to fetch games from API
     await this.props.fetchAllGames(params);
 
+    // navigateTo() {
+    //   window.location.href = "/gamePage/2";
+    // }
+    //  navigateTo(e){
+    //    let id =e.target.key;
+    //   window.location.href=`/gamePage/${id}`;
+    //  }
     // Set the games array to allGames from redux store, isLoading to false since API responded, filter to the modified copy
     this.setState({
       games: this.props.allGames,
@@ -137,6 +151,7 @@ export class AllGamesContainer extends Component {
           filter={this.state.filter}
           handleFilter={this.handleFilter}
           fetchAllGames={this.props.fetchAllGames}
+          onClickDiv={this.navigateTo}
           isLoading={this.state.isLoading}
           navigatePages={this.navigatePages}
         ></AllGamesView>
