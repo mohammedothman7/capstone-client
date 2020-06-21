@@ -36,10 +36,6 @@ class GamePageContainer extends Component {
     });
   };
 
-  componentDidUpdate() {
-    window.scrollTo(0, 0);
-  }
-
   // Update search in state when user types
   handleChange = (event) => {
     this.setState({ search: event.target.value });
