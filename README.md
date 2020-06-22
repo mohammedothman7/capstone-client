@@ -48,7 +48,7 @@ What comes next after registration is the login feature. Pressing the "Login" bu
 
 ## Search Page
 
-![Search Page Top](https://i.imgur.com/SUtRXcw.png)
+![Search Page Top](https://i.imgur.com/tgdkNcc.png)
 ![Search Page Bottom](https://i.imgur.com/Pe7HpHf.png)
 
 The final feature to note is the search feature. Typing in the name of a game in the search bar and submitting will redirect the user to a separate page containing the search results. The user will be able to click on each game and view the respective game page.
