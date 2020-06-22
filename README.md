@@ -10,7 +10,7 @@ Deployed on Heroku at ...
 
 ## Home Page
 
-![Home Page](https://i.imgur.com/j5a2DZ5.png)
+![Home Page](https://i.imgur.com/7CEhuo8.png)
 
 Upon clicking on the link, the user will be greeted with the home screen. At the top, there is a navbar with the name of the project (GameCord), an "About", "Login" and "Register" button, each linking to another aspect of the application.
 
@@ -48,7 +48,7 @@ What comes next after registration is the login feature. Pressing the "Login" bu
 
 ## Search Page
 
-![Search Page Top](https://i.imgur.com/KZL1dof.png)
+![Search Page Top](https://i.imgur.com/SUtRXcw.png)
 ![Search Page Bottom](https://i.imgur.com/Pe7HpHf.png)
 
 The final feature to note is the search feature. Typing in the name of a game in the search bar and submitting will redirect the user to a separate page containing the search results. The user will be able to click on each game and view the respective game page.
