@@ -21,7 +21,7 @@ const login = (user) => {
 
 export const registerUserThunk = (user, ownProps) => (dispatch) => {
   return axios
-    .post("https://gamecord-backend.herokuapp.com/api/games/api/users", user)
+    .post("https://gamecord-backend.herokuapp.com/api/users", user)
     .then((res) => res.data)
     .then((newUser) => {
       const tweakedUser = { ...newUser };
@@ -36,7 +36,7 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
 export const loginThunk = (username, password, ownProps) => (dispatch) => {
   return axios
     .get(
-      `https://gamecord-backend.herokuapp.com/api/games/api/users/${username}/${password}`
+      `https://gamecord-backend.herokuapp.com/api/users/${username}/${password}`
     )
     .then((res) => res.data)
     .then((user) => {
