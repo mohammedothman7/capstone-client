@@ -112,7 +112,8 @@ const GamePageView = (props) => {
                 {/* {this div block is the developer and genres display section} */}
                 <div className="d-flex justify-content-between text-danger pt-4 mt-3">
                   <div>
-                    <h4>{props.game.developers[0].name}</h4>
+                    {props.game.developers[0] ? (<h4>{props.game.developers[0].name}</h4>) 
+                    : (<h4>---</h4>)}
                     <h6 className="text-center">
                       <u>Developer</u>
                     </h6>

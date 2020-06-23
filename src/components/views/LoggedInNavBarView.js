@@ -35,7 +35,7 @@ const LoggedInNavBarView = (props) => {
             className="btn btn-outline-danger ml-2"
             onClick={props.onClick}
           >
-            Logout
+            Logout {props.user}
           </button>
         </div>
       </nav>

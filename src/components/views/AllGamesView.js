@@ -255,21 +255,15 @@ function AllGamesView(props) {
                 </div>
               </div>
               <div className="col-10">
-                <div className="mt-4 mb-1">
-                  <select className="btn btn-outline-danger">
-                    <option value="trending">Trending</option>
-                    <option value="Most Liked">Most Liked</option>
-                    <option value="Best Rating">Release Date</option>
-                    <option value="Best on PS4">Name</option>
-                  </select>
+                <div className="mt-4 mb-1 d-flex flex-row-reverse">
                   <button
-                    className="btn btn-outline-danger ml-2 float-right"
+                    className="btn btn-outline-danger ml-2 "
                     onClick={props.navigatePages("next")}
                   >
                     Next Page
                   </button>
                   <button
-                    className="btn btn-outline-danger float-right"
+                    className="btn btn-outline-danger"
                     onClick={props.navigatePages("previous")}
                   >
                     Previous Page

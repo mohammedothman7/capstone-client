@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GameCord - Front End
 
-## Available Scripts
+GameCord is a Full-Stack app built for the Summer 2020 Tech Talent Pipeline bootcamp. This repository serves as the front end portion of the app. Built with React, Redux, Node, Express, Sequelize, PostgreSQL and other supported packages.
 
-In the project directory, you can run:
+Group Members: Alan Eappen, Jan Markus Milan, Mohammed Othman, Taojie Tan
 
-### `npm start`
+## Link to Deployed Web-App
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Deployed on Heroku at ...
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Home Page
 
-### `npm test`
+![Home Page](https://i.imgur.com/7CEhuo8.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Upon clicking on the link, the user will be greeted with the home screen. At the top, there is a navbar with the name of the project (GameCord), an "About", "Login" and "Register" button, each linking to another aspect of the application.
 
-### `npm run build`
+Below the navbar, there are two separate columns. The left column contains the all the different filters, which include filtering by ratings, release date, platforms and genres. The right column contains all the different games, and each page can load a total of 21 games.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Game Page
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Game Page Top](https://i.imgur.com/p3pgUie.png)
+![Game Page Bottom](https://i.imgur.com/JGvB9EF.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When the user clicks on a game, the user will be sent to the respective game page. At the top, there will be either a video about the game or a screenshot if the video is not available. There is an overlay to show the name of the game and the link to the game's website.
 
-### `npm run eject`
+Below that are two separate columns. The left column contains the release date, the platforms it supports, a like button and the amount of likes the game has, the description of the game, and an add comment section. The right column contains up to six screenshots of the game. Each screenshot is clickable and can be viewed in high-clarity. Note that the comment and like features are only available if the user is logged in to their account.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+At the very bottom are the comments about the game. The name of the user and their comment will be shown in that section.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## About Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![About Page Top](https://i.imgur.com/TwCYiSf.png)
+![About Page Bottom](https://i.imgur.com/8jPPbMa.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When the user clicks on the "About" button in the navbar, the user will be redirected to the about page. There, a cool animation will be displayed at the top of the page, and at the bottom, the names of all the people who worked on the project will be shown.
 
-## Learn More
+## Registration Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Registration Page](https://i.imgur.com/Xozb2zb.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In order to get the full experience of our web app, we implemented a user authentication system in order to exclusively access certain functionalities. Pressing the "Register" button on the navbar will send the user to a separate page and prompt the user to enter their first name, last name, email, username and password that will be associated with their account. That data will be stored in the database to be used for validation on login.
 
-### Code Splitting
+## Login Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![Login Page](https://i.imgur.com/xh3jtMT.png)
 
-### Analyzing the Bundle Size
+What comes next after registration is the login feature. Pressing the "Login" button on the navbar will send the user to a separate page and prompt the user to enter their username and password. Upon logging in, the navbar will adjust accordingly, displaying the user's name next to the 'Logout' button. The user will also be able to like and comment on each game.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Search Page
 
-### Making a Progressive Web App
+![Search Page Top](https://i.imgur.com/tgdkNcc.png)
+![Search Page Bottom](https://i.imgur.com/Pe7HpHf.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+The final feature to note is the search feature. Typing in the name of a game in the search bar and submitting will redirect the user to a separate page containing the search results. The user will be able to click on each game and view the respective game page.
 
-### Advanced Configuration
+## Final Note
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project was inspired by our love for video games and coding, and our willingness to learn and experience new things. We hope people who share the same passions will appreciate this project of ours and possibly be inspired to do something similar with their own interests.
