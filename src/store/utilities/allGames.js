@@ -23,7 +23,7 @@ const fetchGenreGames = (genres) => {
 export const fetchAllGamesThunk = (filter) => (dispatch) => {
   //console.log({ filter });
   return axios
-    .get("/api/games", {
+    .get("https://gamecord-backend.herokuapp.com/api/games", {
       params: {
         // Send params to backend to fetch from API
         ...filter,
@@ -35,7 +35,7 @@ export const fetchAllGamesThunk = (filter) => (dispatch) => {
 
 export const fetchGenreGamesThunk = (genres) => (dispatch) => {
   return axios
-    .get("/api/games/genres", {
+    .get("https://gamecord-backend.herokuapp.com/api/games/genres", {
       params: {
         genres,
       },

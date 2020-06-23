@@ -22,7 +22,7 @@ const addLike = (like) => {
 //Thunk Creators
 export const fetchLikesThunk = (gameId) => (dispatch) => {
   return axios
-    .get(`/api/likes/${gameId}`)
+    .get(`https://gamecord-backend.herokuapp.com/api/likes/${gameId}`)
     .then((res) => res.data)
     .then((likes) => dispatch(fetchLikes(likes)))
     .catch((err) => console.log(err));
@@ -30,7 +30,10 @@ export const fetchLikesThunk = (gameId) => (dispatch) => {
 
 export const addLikeThunk = (like) => (dispatch) => {
   return axios
-    .post(`/api/likes/${like.gameId}`, like)
+    .post(
+      `https://gamecord-backend.herokuapp.com/api/likes/${like.gameId}`,
+      like
+    )
     .then((res) => res.data)
     .then((newLike) => {
       dispatch(addLike(newLike));
