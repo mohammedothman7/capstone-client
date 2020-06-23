@@ -16,7 +16,7 @@ const GamePageView = (props) => {
         <div>
           {/* {this div block is the clip section} */}
           <div className="container-fluid bgContainer p-0">
-            {props.game.clip  ? (
+            {props.game.clip ? (
               <video
                 className="bg"
                 playsInline="playsinline"
@@ -26,7 +26,7 @@ const GamePageView = (props) => {
               >
                 <source src={props.game.clip.clips.full} />
               </video>
-            ) : props.game.background_image_additional  ? (
+            ) : props.game.background_image_additional ? (
               <img
                 className="bg"
                 src={props.game.background_image_additional}
@@ -34,21 +34,20 @@ const GamePageView = (props) => {
               ></img>
             ) : (
               <div>
-              <video
-                id="video1"
-                playsInline="playsinline"
-                autoPlay="autoplay"
-                muted="muted"
-                loop="loop"
-              >
-                <source src={video1} type="video/mp4" />
-              </video>
-              <div className="overlay my-lg-5 d-flex justify-content-center align-items-center">
-                <h1>!! NO VIDEO OR PICTURE !!</h1>
+                <video
+                  id="video1"
+                  playsInline="playsinline"
+                  autoPlay="autoplay"
+                  muted="muted"
+                  loop="loop"
+                >
+                  <source src={video1} type="video/mp4" />
+                </video>
+                <div className="overlay my-lg-5 d-flex justify-content-center align-items-center">
+                  <h1>!! NO VIDEO OR PICTURE !!</h1>
+                </div>
               </div>
-            </div>
-            )
-            }
+            )}
 
             <div className="overlayBG p-5">
               <h1>{props.game.name}</h1>
@@ -56,7 +55,8 @@ const GamePageView = (props) => {
                 <a
                   className="btn btn-outline-danger pb-2 ml-2"
                   href={props.game.website}
-                  target = "_blank"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Official Website
                 </a>
@@ -94,7 +94,6 @@ const GamePageView = (props) => {
                   <AddLikeContainer gameId={props.game.id} />
                   <h2 className="text-danger ml-3 mt-1">{props.likes.count}</h2>
                 </div>
-
 
                 {/* {this div block is the About section} */}
                 <h4 className="text-danger mt-3">About</h4>
