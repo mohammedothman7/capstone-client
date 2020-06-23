@@ -6,7 +6,7 @@ Group Members: Alan Eappen, Jan Markus Milan, Mohammed Othman, Taojie Tan
 
 ## Link to Deployed Web-App
 
-Deployed on Heroku at ...
+Deployed on Heroku at https://gamecord.netlify.app/
 
 ## Home Page
 
