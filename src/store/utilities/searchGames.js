@@ -11,7 +11,7 @@ const fetchSearchedGames = (games) => {
 
 export const fetchSearchedGamesThunk = (search) => (dispatch) => {
   return axios
-    .get("/api/games/search", {
+    .get("https://gamecord-backend.herokuapp.com/api/games/search", {
       params: {
         search,
       },

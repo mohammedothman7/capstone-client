@@ -22,7 +22,7 @@ const addComment = (comment) => {
 //Thunk Creators
 export const fetchCommentsThunk = (gameId) => (dispatch) => {
   return axios
-    .get(`/api/comments/${gameId}`)
+    .get(`https://gamecord-backend.herokuapp.com/api/comments/${gameId}`)
     .then((res) => res.data)
     .then((comments) => dispatch(fetchComments(comments)))
     .catch((err) => console.log(err));
@@ -30,7 +30,10 @@ export const fetchCommentsThunk = (gameId) => (dispatch) => {
 
 export const addCommentThunk = (newComment) => (dispatch) => {
   return axios
-    .post(`/api/comments/${newComment.gameId}`, newComment)
+    .post(
+      `https://gamecord-backend.herokuapp.com/api/comments/${newComment.gameId}`,
+      newComment
+    )
     .then((res) => res.data)
     .then((newComment) => {
       dispatch(addComment(newComment));
