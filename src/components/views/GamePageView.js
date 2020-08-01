@@ -145,8 +145,8 @@ const GamePageView = (props) => {
               {/* {this div block is the screenshot section} */}
               <div className="col pr-1">
                 <SRLWrapper>
-                  {props.screenshot !== undefined || null ? (
-                    console.log(props.screenshot),
+                  {props.screenshot.results !== undefined || null ? (
+                    // console.log(props.screenshot),
                     <div className="row row-cols-1 row-cols-md-2 pt-4">
                       {props.screenshot.results.map((result) => {
                         return (
@@ -183,7 +183,7 @@ const GamePageView = (props) => {
                 {props.comments.map((comment) => (
                   <div className="d-flex pt-1" key={comment.id}>
                     <div key={comment.id}>
-                      {console.log("keyid", comment.id)}
+                      {/* {console.log("keyid", comment.id)} */}
                       <div>
                         <h5>{comment.user.username}</h5>
                       </div>
@@ -202,7 +202,7 @@ const GamePageView = (props) => {
         </div>
       ) : (
         <div className="loader"></div>
-      ) : props.getGames()}
+      ) : props.getGame}
     </div>
   );
 };
