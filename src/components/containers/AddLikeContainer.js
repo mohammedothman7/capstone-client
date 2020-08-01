@@ -27,6 +27,7 @@ class AddLikeContainer extends Component {
     if (typeof this.props.likes.rows.map == "function") {
       this.props.likes.rows.map((like) => {
         if (like.userId === this.props.user.id) this.alreadyLiked = true;
+        return this.alreadyLiked;
       });
     }
     if (!this.alreadyLiked) {
