@@ -20,6 +20,7 @@ const RoutesView = () => {
       <Route exact path="/gamePage/:id" component={GamePageContainer} />
       <Route exact path="/loginNav" component={LoggedInNavBarContainer} />
       <Route exact path="/search" component={SearchGamesContainer} />
+      <Route path="*" component={NavBarContainer} />
     </Switch>
   );
 };
