@@ -57,6 +57,10 @@ class GamePageContainer extends Component {
     }
   };
 
+  getGame = (id) => {
+    this.props.fetchGame(this.props.match.params.id);
+  }
+
   render() {
     return (
       <div>

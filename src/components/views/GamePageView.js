@@ -8,11 +8,12 @@ import "./styles/AboutView.css";
 import { SRLWrapper } from "simple-react-lightbox";
 
 const GamePageView = (props) => {
-  console.log("This is GamePageView --- view Props", props);
+  // console.log("This is GamePageView --- view Props", props);
   //console.log("screenshot 1", props.screenshot.results)
   return (
     <div>
-      {props.game.name ? (
+      {props.game ? 
+      props.game.name ? (
         <div>
           {/* {this div block is the clip section} */}
           <div className="container-fluid bgContainer p-0">
@@ -144,7 +145,8 @@ const GamePageView = (props) => {
               {/* {this div block is the screenshot section} */}
               <div className="col pr-1">
                 <SRLWrapper>
-                  {props.screenshot ? (
+                  {props.screenshot !== undefined || null ? (
+                    console.log(props.screenshot),
                     <div className="row row-cols-1 row-cols-md-2 pt-4">
                       {props.screenshot.results.map((result) => {
                         return (
@@ -200,7 +202,7 @@ const GamePageView = (props) => {
         </div>
       ) : (
         <div className="loader"></div>
-      )}
+      ) : props.getGames()}
     </div>
   );
 };
