@@ -112,8 +112,11 @@ const GamePageView = (props) => {
                 {/* {this div block is the developer and genres display section} */}
                 <div className="d-flex justify-content-between text-danger pt-4 mt-3">
                   <div>
-                    {props.game.developers[0] ? (<h4>{props.game.developers[0].name}</h4>) 
-                    : (<h4>---</h4>)}
+                    {props.game.developers[0] ? (
+                      <h4>{props.game.developers[0].name}</h4>
+                    ) : (
+                      <h4>---</h4>
+                    )}
                     <h6 className="text-center">
                       <u>Developer</u>
                     </h6>
@@ -146,7 +149,7 @@ const GamePageView = (props) => {
                 <SRLWrapper>
                   {props.screenshot ? (
                     <div className="row row-cols-1 row-cols-md-2 pt-4">
-                      {props.screenshot.results.map((result) => {
+                      {props?.screenshot?.results?.map((result) => {
                         return (
                           <div
                             className="col mb-4 parentContainer"

@@ -26,7 +26,11 @@ export const fetchGameThunk = (id) => (dispatch) => {
     .then((game) => {
       dispatch(fetchGame(game));
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.error(err);
+      alert("Game with that id does not exist!");
+      return err;
+    });
 };
 
 export const clearGameThunk = (dispatch) => {
