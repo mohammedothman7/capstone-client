@@ -25,7 +25,7 @@ export const registerUserThunk = (user, ownProps) => (dispatch) => {
     .then((res) => res.data)
     .then((newUser) => {
       const tweakedUser = { ...newUser };
-      console.log(tweakedUser);
+      // console.log(tweakedUser);
       dispatch(registerUser(tweakedUser));
       //ownProps.history.push(`/`);
       ownProps.history.goBack();
@@ -41,8 +41,11 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
     .then((res) => res.data)
     .then((user) => {
       const loggedUser = { ...user };
-     
-        console.log(loggedUser);
+      if (Object.keys(loggedUser).length === 0) {
+        // console.log("FAIL");
+        alert("Incorrect username and / or password");
+      } else {
+
         dispatch(login(loggedUser));
         ownProps.history.goBack();
     }).catch((err) => {
@@ -57,7 +60,7 @@ const reducer = (state = [], action) => {
     case REGISTER_USER:
       return [...state, action.payload];
     case LOGIN:
-      console.log("login payload", action.payload);
+      // console.log("login payload", action.payload);
       return action.payload;
     default:
       return state;

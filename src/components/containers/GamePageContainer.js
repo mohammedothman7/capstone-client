@@ -57,6 +57,12 @@ class GamePageContainer extends Component {
     }
   };
 
+  getGame = async (id) => {
+    // console.log('getting game by game id in url');
+    const game = await this.props.fetchGame(this.props.match.params.id);
+    this.props.game = game;
+  }
+
   render() {
     return (
       <div>
@@ -76,6 +82,7 @@ class GamePageContainer extends Component {
               comments={this.props.comments}
               screenshot={this.props.screenshot}
               likes={this.props.likes}
+              getGame={this.getGame}
             />
           </SimpleReactLightbox>
         </div>
