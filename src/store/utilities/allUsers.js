@@ -45,10 +45,12 @@ export const loginThunk = (username, password, ownProps) => (dispatch) => {
         // console.log("FAIL");
         alert("Incorrect username and / or password");
       } else {
-        // console.log(loggedUser);
+
         dispatch(login(loggedUser));
         ownProps.history.goBack();
-      }
+    }).catch((err) => {
+      console.log(err);
+      alert("Incorrect username and / or password");
     });
 };
 
