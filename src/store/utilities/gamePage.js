@@ -21,7 +21,11 @@ const clearGame = () => {
 //Thunk Creators
 export const fetchGameThunk = (id) => (dispatch) => {
   return axios
-    .get(`https://api.rawg.io/api/games/${id}`)
+    .get(`https://api.rawg.io/api/games/${id}`, {
+      params: {
+        key: process.env.RAWG_API_KEY,
+      },
+    })
     .then((res) => res.data)
     .then((game) => {
       dispatch(fetchGame(game));

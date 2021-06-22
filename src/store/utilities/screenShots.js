@@ -11,7 +11,11 @@ const fetchSS = (screenshot) => {
 
 export const fetchSSThunk = (id) => (dispatch) => {
   return axios
-    .get(`https://api.rawg.io/api/games/${id}/screenshots`)
+    .get(`https://api.rawg.io/api/games/${id}/screenshots`, {
+      params: {
+        key: process.env.RAWG_API_KEY,
+      },
+    })
     .then((res) => res.data)
     .then((screenshot) => dispatch(fetchSS(screenshot)))
     .catch((err) => console.log(err));
