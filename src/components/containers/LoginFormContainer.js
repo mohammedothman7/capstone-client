@@ -42,9 +42,9 @@ class LoginFormContainer extends Component {
 }
 
 const mapState = (state) => {
-  console.log(state);
+  // console.log(state);
   const user = state.allUsers;
-  console.log(user);
+  // console.log(user);
   return {
     user: user,
   };
