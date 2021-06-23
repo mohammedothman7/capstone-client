@@ -20,21 +20,23 @@ const clearGame = () => {
 
 //Thunk Creators
 export const fetchGameThunk = (id) => (dispatch) => {
-  return axios
-    .get(`https://api.rawg.io/api/games/${id}`, {
-      params: {
-        key: process.env.RAWG_API_KEY,
-      },
-    })
-    .then((res) => res.data)
-    .then((game) => {
-      dispatch(fetchGame(game));
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("Game with that id does not exist!");
-      return err;
-    });
+  return (
+    axios
+      .get(`https://gamecord-backend.herokuapp.com/api/games/game`, {
+        params: {
+          id,
+        },
+      })
+      .then((res) => dispatch(fetchGame(res.data)))
+      // .then((game) => {
+      //   dispatch(fetchGame(game));
+      // })
+      .catch((err) => {
+        console.error(err);
+        alert("Game with that id does not exist!");
+        return err;
+      })
+  );
 };
 
 export const clearGameThunk = (dispatch) => {

@@ -11,9 +11,9 @@ const fetchSS = (screenshot) => {
 
 export const fetchSSThunk = (id) => (dispatch) => {
   return axios
-    .get(`https://api.rawg.io/api/games/${id}/screenshots`, {
+    .get(`https://gamecord-backend.herokuapp.com/api/games/screenshots`, {
       params: {
-        key: process.env.RAWG_API_KEY,
+        id,
       },
     })
     .then((res) => res.data)
