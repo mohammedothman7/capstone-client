@@ -15,7 +15,8 @@ class LoggedInNavBarContainer extends Component {
   }
 
   componentDidMount() {
-    // const user = { ...this.props.user };
+    const user = { ...this.props.user };
+
     // console.log("before set state  ", user);
     this.setState({
       username: this.props.user.username,

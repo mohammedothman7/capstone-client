@@ -16,7 +16,7 @@ export class SearchGames extends Component {
   }
 
   async componentDidMount() {
-    // const user = { ...this.props.user };
+    const user = { ...this.props.user };
     // console.log("before set state  ", user);
     this.setState({
       username: this.props.user.username,
@@ -60,7 +60,6 @@ export class SearchGames extends Component {
           />
         )}
         <div>
-          {/* {console.log("Search Games:", this.props.search)} */}
           <SearchGamesView searchGames={this.props.search} />
         </div>
       </div>
